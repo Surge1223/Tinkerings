@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <CheckBoxPreference android:title="@string/hidenfc_title" android:key="statusbar_hide_nfc" android:summaryOn="@string/hidenfc_summary_on" android:summaryOff="@string/hidenfc_summary_off" />
+    <CheckBoxPreference android:title="@string/hideime_title" android:key="statusbar_hide_ime" android:summaryOn="@string/hideime_summary_on" android:summaryOff="@string/hideime_summary_off" />
+    <CheckBoxPreference android:title="@string/hidealarm_title" android:key="statusbar_hide_alarm" android:summaryOn="@string/hidealarm_summary_on" android:summaryOff="@string/hidealarm_summary_off" />
+    <CheckBoxPreference android:title="@string/hidebtooth_title" android:key="statusbar_hide_btooth" android:summaryOn="@string/hidebtooth_summary_on" android:summaryOff="@string/hidebtooth_summary_off" />
+    <CheckBoxPreference android:title="@string/hidesound_title" android:key="statusbar_hide_vib" android:summaryOn="@string/hidesound_summary_on" android:summaryOff="@string/hidesound_summary_off" />
+    <CheckBoxPreference android:title="@string/hidewificall_title" android:key="statusbar_hide_wificall" android:summaryOn="@string/hidewificall_summary_on" android:summaryOff="@string/hidewificall_summary_off" />
+    <CheckBoxPreference android:title="@string/hidenosim_title" android:key="statusbar_hide_nosim" android:summaryOn="@string/hidenosim_summary_on" android:summaryOff="@string/hidenosim_summary_off" />
+</PreferenceScreen>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <ListPreference android:entries="@array/notiback_entries" android:title="@string/notiback_title" android:key="notification_color_custom" android:summary="@string/notiback_summary" android:entryValues="@array/notiback_values" />
+    <CheckBoxPreference android:title="@string/noticustimg_title" android:key="notification_image" android:summaryOn="@string/noticustimg_summary_on" android:summaryOff="@string/noticustimg_summary_off" />
+    <Preference android:title="@string/noticustimgset_title" android:key="custom_pic_bg" android:summary="@string/picker_summary" android:dependency="notification_image" />
+    <android.dwitherell.tinkerings.utils.SeekBarPreference android:title="@string/noticustimgalpha_title" android:summary="@string/seekbar_summary" android:key="custom_pic_alpha" android:dependency="notification_image" android:defaultValue="255" android:dialogMessage="@string/noticustimgalpha_dialogtitle" android:text="@string/noticustimgalpha_units" android:max="255" custom:percentage="true" />
+    <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="notification_background_color" android:title="@string/noticolor_title" android:dialogTitle="@string/noticolor_dialogtitle" android:summary="@string/colorpicker_summary" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xff000000" />
+    <CheckBoxPreference android:title="@string/anihandle_title" android:key="statusbar_handle_anim" android:summaryOn="@string/anihandle_summary_on" android:summaryOff="@string/anihandle_summary_off" />
+    <CheckBoxPreference android:title="@string/customdatetarg_title" android:key="use_custom_date" android:summaryOn="@string/customdatetarg_summary_on" android:summaryOff="@string/customdatetarg_summary_off" />
+    <Preference android:title="@string/customdatetarg_set_title" android:key="custom_date_view" android:summary="@string/picker_summary" android:dependency="use_custom_date" />
+    <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="dateclock_color" android:title="@string/dateclockcolor_title" android:dialogTitle="@string/dateclockcolor_title" android:summary="@string/colorpicker_summary" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xffcccccc" />
+    <CheckBoxPreference android:title="@string/hidenonoti_title" android:key="statusbar_hide_nonoti" android:summaryOn="@string/hidenonoti_summary_on" android:summaryOff="@string/hidenonoti_summary_off" />
+    <CheckBoxPreference android:title="@string/showcleartop_title" android:key="statusbar_aosp_clear" android:summaryOn="@string/showcleartop_summary_on" android:summaryOff="@string/showcleartop_summary_off" />
+    <CheckBoxPreference android:title="@string/hidenotitext_title" android:key="statusbar_hide_latest" android:dependency="statusbar_aosp_clear" android:summaryOn="@string/hidenotitext_summary_on" android:summaryOff="@string/hidenotitext_summary_off" />
+    <CheckBoxPreference android:title="@string/hideongoing_title" android:key="statusbar_ongoing_block" android:summaryOn="@string/hideongoing_summary_on" android:summaryOff="@string/hideongoing_summary_off" />
+</PreferenceScreen>

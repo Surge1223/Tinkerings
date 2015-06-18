@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto" >
+    <PreferenceCategory android:title="@string/batcat_0_title">
+        <ListPreference android:entries="@array/batterybar_entries" android:title="@string/batbar_title" android:key="miuibattery_indicator_style" android:summary="@string/batbar_summary" android:entryValues="@array/batterybar_values" />
+        <CheckBoxPreference android:title="@string/batbaranim_title" android:key="batterybar_animation" android:summaryOn="@string/batbaranim_summary_on" android:summaryOff="@string/batbaranim_summary_off" />
+        <CheckBoxPreference android:title="@string/battext_title" android:key="statusbar_battery_percent" android:summaryOn="@string/battext_summary_on" android:summaryOff="@string/battext_summary_off" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/batcat_1_title">
+        <CheckBoxPreference android:title="@string/batcolorvary_title" android:key="battery_text_color" android:summaryOn="@string/batcolorvary_summary_on" android:summaryOff="@string/batcolorvary_summary_off" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="battery_color" android:title="@string/batonecolor_title" android:dialogTitle="@string/batonecolor_dialogtitle" android:summary="@string/colorpicker_summary" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="battcolorchange" android:defaultValue="0xffcccccc" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="battery_color_auto_charging" android:title="@string/batcharge_title" android:dialogTitle="@string/batcharge_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="battery_text_color" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="battcolorchange" android:defaultValue="0xff93d500" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="battery_color_auto_regular" android:title="@string/batlvl1_title" android:dialogTitle="@string/batlvl1_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="battery_text_color" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="battcolorchange" android:defaultValue="0xffcccccc" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="battery_color_auto_medium" android:title="@string/batlvl2_title" android:dialogTitle="@string/batlvl2_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="battery_text_color" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="battcolorchange" android:defaultValue="0xffffff00" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="battery_color_auto_low" android:title="@string/batlvl3_title" android:dialogTitle="@string/batlvl3_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="battery_text_color" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="battcolorchange" android:defaultValue="0xffff0000" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/batcat_2_title">
+        <ListPreference android:entries="@array/battery_entries" android:title="@string/baticon_type_title" android:key="statusbar_acc_battery" android:summary="@string/baticon_type_summary" android:entryValues="@array/battery_values" />
+        <Preference android:title="@string/minit_title" android:key="3minitlink" />
+        <CheckBoxPreference android:title="@string/baticoncolor_title" android:key="battery_color_44" android:summaryOn="@string/baticoncolor_summary_on" android:summaryOff="@string/baticoncolor_summary_off" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="custom_battery_color" android:title="@string/bat44color_title" android:dialogTitle="@string/bat44color_title" android:summary="@string/colorpicker_summary" android:dependency="battery_color_44" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xffffffff" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="custom_batterytext_color" android:title="@string/batcolor_bolt_title" android:dialogTitle="@string/batcolor_bolt_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="battery_color_44" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xff000000" />
+    </PreferenceCategory>
+</PreferenceScreen>

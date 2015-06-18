@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto" >
+    <PreferenceCategory android:title="@string/sigcat_0_title">
+        <CheckBoxPreference android:title="@string/carriericon_title" android:key="statusbar_data_icon" android:summaryOn="@string/carriericon_summary_on" android:summaryOff="@string/carriericon_summary_off" />
+        <CheckBoxPreference android:title="@string/datastick_title" android:key="statusbar_data_stay" android:summaryOn="@string/datastick_summary_on" android:summaryOff="@string/datastick_summary_off" />
+        <CheckBoxPreference android:title="@string/hidesig_title" android:key="hide_signal_icon" android:summaryOn="@string/hidesig_summary_on" android:summaryOff="@string/hidesig_summary_off" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/sigcat_1_title">
+        <CheckBoxPreference android:title="@string/showdbm_title" android:key="show_status_dbm" android:summaryOn="@string/showdbm_summary_on" android:summaryOff="@string/showdbm_summary_off" />
+        <CheckBoxPreference android:title="@string/dbmlabel_title" android:key="show_dbm_text" android:dependency="show_status_dbm" android:summaryOn="@string/dbmlabel_summary_on" android:summaryOff="@string/dbmlabel_summary_off" />
+        <CheckBoxPreference android:title="@string/varycolor_title" android:key="dbm_auto_color" android:dependency="show_status_dbm" android:summaryOn="@string/varycolor_summary_on" android:summaryOff="@string/varycolor_summary_off" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="dbm_color" android:title="@string/onecolor_title" android:dialogTitle="@string/onecolor_dialogtitle" android:summary="@string/colorpicker_summary" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="dbmcolorchange" android:defaultValue="0xffcccccc" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="dbm_auto_color_0" android:title="@string/lowest_title" android:dialogTitle="@string/lowest_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="dbm_auto_color" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="dbmcolorchange" android:defaultValue="0xffff0000" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="dbm_auto_color_1" android:title="@string/low_title" android:dialogTitle="@string/low_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="dbm_auto_color" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="dbmcolorchange" android:defaultValue="0xffffa500" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="dbm_auto_color_2" android:title="@string/medium_title" android:dialogTitle="@string/medium_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="dbm_auto_color" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="dbmcolorchange" android:defaultValue="0xffffff00" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="dbm_auto_color_3" android:title="@string/high_title" android:dialogTitle="@string/high_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="dbm_auto_color" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="dbmcolorchange" android:defaultValue="0xffcccccc" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="dbm_auto_color_4" android:title="@string/highest_title" android:dialogTitle="@string/highest_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="dbm_auto_color" custom:alphaSlider="true" custom:alphaText="true" custom:colorgroupname="dbmcolorchange" android:defaultValue="0xff00ff00" />
+    </PreferenceCategory>
+</PreferenceScreen>

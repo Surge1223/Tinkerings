@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <CheckBoxPreference android:title="@string/s5sysui_title" android:key="s5_systemui_enable" android:summaryOn="@string/s5sysui_summary_on" android:summaryOff="@string/s5sysui_summary_off" />
+    <CheckBoxPreference android:title="@string/statbright_title" android:key="statusbar_bright_control" android:summaryOn="@string/statbright_summary_on" android:summaryOff="@string/statbright_summary_off" />
+    <CheckBoxPreference android:title="@string/statdubtap_title" android:key="statusbar_doubletap_sleep" android:summaryOn="@string/statdubtap_summary_on" android:summaryOff="@string/statdubtap_summary_off" />
+    <CheckBoxPreference android:title="@string/dimblock_title" android:key="statusbar_dim_block" android:summaryOn="@string/dimblick_summary_on" android:summaryOff="@string/dimblock_summary_off" />
+    <CheckBoxPreference android:title="@string/statbarcolor_title" android:key="statusbar_color_custom" android:summaryOn="@string/statbarcolor_summary_on" android:summaryOff="@string/statbarcolor_summary_off" />
+    <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="statusbar_background_color" android:title="@string/statbarcolor_set_title" android:dialogTitle="@string/statbarcolor_set_dialogtitle" android:summary="@string/colorpicker_summary" custom:alphaSlider="true" custom:alphaText="true" android:dependency="statusbar_color_custom" android:defaultValue="0xff000000" />
+</PreferenceScreen>

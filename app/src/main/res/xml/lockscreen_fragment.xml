@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto" >
+    <PreferenceScreen android:title="@string/locksettings_title" android:summary="@string/locksettings_summary">
+        <intent android:targetPackage="com.android.settings" android:action="android.intent.action.MAIN" android:targetClass="com.android.settings.LockscreenMenuSettings" />
+    </PreferenceScreen>
+    <CheckBoxPreference android:title="@string/locktime_title" android:key="custom_lock_timeout" android:dependency="lockscreen_disable" android:summaryOn="@string/locktime_summary_on" android:summaryOff="@string/locktime_summary_off" />
+    <android.dwitherell.tinkerings.utils.SeekBarPreference android:title="@string/locktime_set_title" android:summary="@string/seekbar_summary" android:key="lockscreen_timeout_pref" android:dependency="custom_lock_timeout" android:defaultValue="5" android:dialogMessage="@string/headsup_timeout_dialogtitle" android:max="30" android:text="@string/locktime_units" custom:displayfactor="@integer/locktime_factor" custom:minval="3" />
+    <PreferenceCategory android:title="@string/lockcat_0_title">
+        <CheckBoxPreference android:title="@string/sviewback_title" android:key="custom_sview_background" android:summaryOn="@string/sviewback_summary_on" android:summaryOff="@string/sviewback_summary_off" />
+        <CheckBoxPreference android:title="@string/sviewforce_title" android:key="sview_verify" android:summaryOn="@string/sviewforce_summary_on" android:summaryOff="@string/sviewforce_summary_off" />
+        <CheckBoxPreference android:title="@string/lockdisable_title" android:key="lockscreen_disable" android:summary="@string/lockdisable_summary" android:disableDependentsState="true" />
+        <CheckBoxPreference android:title="@string/lockrotate_title" android:key="lock_screen_rotation" android:dependency="lockscreen_disable" android:summaryOn="@string/lockrotate_summary_on" android:summaryOff="@string/lockrotate_summary_off" />
+        <ListPreference android:entries="@array/lock_screen_entries" android:title="Lockscreen style" android:key="lockscreen_style_type" android:summary="Unlock style" android:dependency="lockscreen_disable" android:entryValues="@array/lock_screen_values" />
+        <CheckBoxPreference android:title="@string/aosphapdisable_title" android:key="lockscreen_haptic" android:dependency="lockscreen_disable" android:summaryOn="@string/aosphapdisable_summary_on" android:summaryOff="@string/aosphapdisable_summary_off" />
+        <CheckBoxPreference android:title="@string/quickpin_title" android:key="quick_pinpass" android:dependency="lockscreen_disable" android:summaryOn="@string/quickpin_summary_on" android:summaryOff="@string/quickpin_summary_off" />
+        <CheckBoxPreference android:title="@string/seccamwidg_title" android:key="allow_camera_widget" android:dependency="lockscreen_disable" android:summaryOn="@string/seccamwidg_summary_on" android:summaryOff="@string/seccamwidg_summary_off" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/lockcat_1_title">
+        <CheckBoxPreference android:title="@string/carriertxt_title" android:key="lockscreen_msg_type" android:dependency="lockscreen_disable" android:summaryOn="@string/carriertxt_summary_on" android:summaryOff="@string/carriertxt_summary_off" />
+        <EditTextPreference android:title="@string/carriertxt_set_title" android:key="lockscreen_custom_msg" android:dependency="lockscreen_msg_type" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="lockscreen_msg_color" android:title="@string/carriertxt_color_title" android:summary="@string/colorpicker_summary" android:dialogTitle="@string/carriertxt_dialog_title" custom:alphaSlider="true" custom:alphaText="true" android:dependency="lockscreen_disable" android:defaultValue="0xffffffff" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/lockcat_2_title">
+        <CheckBoxPreference android:title="@string/pmenudis_title" android:key="pmenu_lockblock" android:dependency="lockscreen_disable" android:summaryOn="@string/pmenudis_summary_on" android:summaryOff="@string/pmenudis_summary_off" />
+        <CheckBoxPreference android:title="@string/homewakedis_title" android:key="lockscreen_home_wake" android:summaryOn="@string/homewakedis_summary_on" android:summaryOff="@string/homewakedis_summary_off" />
+        <CheckBoxPreference android:title="@string/locktorch_title" android:key="enable_lockscreen_torch" android:dependency="lockscreen_disable" android:summaryOn="@string/locktorch_summary_on" android:summaryOff="@string/locktorch_summary_off" />
+        <CheckBoxPreference android:title="@string/volwake_title" android:key="lockscreen_volume_wake" android:summary="@string/volwake_summary" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/lockcat_3_title">
+        <CheckBoxPreference android:title="@string/fingink_title" android:key="lockscreen_finger_ink" android:dependency="lockscreen_disable" android:summaryOn="@string/fingink_summary_on" android:summaryOff="@string/fingink_summary_off" />
+        <CheckBoxPreference android:title="@string/customink_title" android:key="lockscreen_ink_custom" android:dependency="lockscreen_disable" android:summaryOn="@string/customink_summary_on" android:summaryOff="@string/customink_summary_off" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="lockscreen_ink_color" android:title="@string/customink_set_title" android:dialogTitle="@string/customink_dialog_title" android:summary="@string/colorpicker_summary" android:dependency="lockscreen_ink_custom" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xff0000ff" />
+    </PreferenceCategory>
+</PreferenceScreen>

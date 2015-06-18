@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <ListPreference android:entries="@array/volcursor_entries" android:title="@string/volcursor_title" android:key="vol_cursor_type" android:summary="@string/volcursor_summary" android:dialogTitle="@string/volcursor_dialog_title" android:entryValues="@array/volcursor_values" />
+    <CheckBoxPreference android:title="@string/volcontrol_title" android:key="long_press_skip" android:summaryOn="@string/volcontrol_summary_on" android:summaryOff="@string/volcontrol_summary_off" />
+    <ListPreference android:entries="@array/volup_entries" android:title="@string/volcontrol_up_title" android:key="vol_up_type" android:summary="@string/volcontrol_up_summary" android:dependency="long_press_skip" android:dialogTitle="@string/volcontrol_up_dialog_title" android:entryValues="@array/volup_values" />
+    <ListPreference android:entries="@array/voldown_entries" android:title="@string/volcontrol_down_title" android:key="vol_down_type" android:summary="@string/volcontrol_down_summary" android:dependency="long_press_skip" android:dialogTitle="@string/volcontrol_down_dialog_title" android:entryValues="@array/voldown_values" />
+    <CheckBoxPreference android:title="@string/doublehome_stop_title" android:key="stop_double_tap" android:summaryOn="@string/doublehome_stop_summary_on" android:summaryOff="@string/doublehome_stop_summary_off" android:disableDependentsState="true" />
+    <CheckBoxPreference android:title="@string/doublehome_picker_title" android:key="custom_dubhome_intent" android:dependency="stop_double_tap" android:summaryOn="@string/doublehome_picker_summary_on" android:summaryOff="@string/doublehome_picker_summary_off" />
+    <Preference android:title="@string/doublehome_app_pick" android:key="custom_dubhome_activity" android:summary="@string/picker_summary" android:dependency="custom_dubhome_intent" />
+    <CheckBoxPreference android:title="@string/longhome_picker_title" android:key="custom_longhome_intent" android:summaryOn="@string/longhome_picker_summary_on" android:summaryOff="@string/longhome_picker_summary_off" />
+    <Preference android:title="@string/longhome_app_pick" android:key="custom_longhome_activity" android:summary="@string/picker_summary" android:dependency="custom_longhome_intent" />
+    <CheckBoxPreference android:title="@string/longback_picker_title" android:key="custom_longback_intent" android:summaryOn="@string/longback_picker_summary_on" android:summaryOff="@string/longback_picker_summary_off" />
+    <Preference android:title="@string/longback_app_pick" android:key="custom_longback_activity" android:summary="@string/picker_summary" android:dependency="custom_longback_intent" />
+    <CheckBoxPreference android:title="@string/longmenu_picker_title" android:key="custom_longmenu_intent" android:summaryOn="@string/longmenu_picker_summary_on" android:summaryOff="@string/longmenu_picker_summary_off" />
+    <Preference android:title="@string/longmenu_picker_app" android:key="custom_longmenu_activity" android:summary="@string/picker_summary" android:dependency="custom_longmenu_intent" />
+    <ListPreference android:entries="@array/longpress_entries" android:title="@string/appkill_title" android:key="longpresstype" android:summary="@string/appkill_summary" android:dialogTitle="@string/appkill_dialog_title" android:entryValues="@array/longpress_values" />
+</PreferenceScreen>

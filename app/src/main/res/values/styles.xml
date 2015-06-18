@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <!--item name="colorPrimary">@color/bg_mat_dark</item-->
+        <!--item name="android:windowNoTitle">true</item-->
+        <item name="colorPrimary">@color/col_accnt</item>
+        <item name="colorPrimaryDark">@color/statbar</item>
+        <item name="colorAccent">@color/col_accnt</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ToolbarCustomIconColor" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- android:textColorSecondary is used for coloring the navigation drawer icon and up arrow. -->
+        <item name="android:textColorSecondary">@color/widget_title_text_color</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+</resources>

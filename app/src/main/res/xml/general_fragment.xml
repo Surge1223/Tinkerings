@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto" >
+    <PreferenceScreen android:title="@string/devoption_title" android:summary="@string/devoption_summary">
+        <intent android:targetPackage="com.android.settings" android:action="android.intent.action.MAIN" android:targetClass="com.android.settings.DevelopmentSettings" />
+    </PreferenceScreen>
+    <PreferenceCategory android:title="@string/gencat_0_title">
+        <android.dwitherell.tinkerings.utils.SeekBarPreference android:title="@string/winaniscale_title" android:summary="@string/winaniscale_summary" android:key="window_anim_custom" android:defaultValue="10" android:dialogMessage="@string/winaniscale_dialogtitle" android:max="100" android:text="@string/winaniscale_units" custom:displayfactor="@integer/winaniscale_factor" custom:decimalsshown="@integer/winaniscale_decimalplaces" custom:animtype="0" />
+        <android.dwitherell.tinkerings.utils.SeekBarPreference android:title="@string/trananiscale_title" android:summary="@string/trananiscale_summary" android:key="trans_anim_custom" android:defaultValue="10" android:dialogMessage="@string/trananiscale_dialogtitle" android:max="100" android:text="@string/trananiscale_units" custom:displayfactor="@integer/trananiscale_factor" custom:decimalsshown="@integer/trananiscale_decimalplaces" custom:animtype="1" />
+        <android.dwitherell.tinkerings.utils.SeekBarPreference android:title="@string/anidurscale_title" android:summary="@string/anidurscale_summary" android:key="anim_dur_custom" android:defaultValue="10" android:dialogMessage="@string/anidurscale_dialogtitle" android:max="100" android:text="@string/anidurscale_units" custom:displayfactor="@integer/anidurscale_factor" custom:decimalsshown="@integer/anidurscale_decimalplaces" custom:animtype="2" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/gencat_1_title">
+        <CheckBoxPreference android:title="@string/drmblock_title" android:key="skipflagsecure" android:summaryOn="@string/drmblock_on" android:summaryOff="@string/drmblock_off" />
+        <ListPreference android:entries="@array/nfc_entries" android:title="@string/nfc_title" android:key="nfc_type_key" android:dialogTitle="@string/nfc_diagtitle" android:entryValues="@array/nfc_values" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="aircommand_text_color" android:title="@string/aircom_title" android:dialogTitle="@string/aircom_dialog_title" android:summary="@string/colorpicker_summary" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xffffffff" />
+        <Preference android:title="@string/floatbrows_title" android:key="custom_popup_app_activity" android:summary="@string/picker_summary" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/gencat_2_title">
+        <CheckBoxPreference android:title="@string/headsup_title" android:key="heads_up_enabled" android:summaryOn="@string/headsup_on" android:summaryOff="@string/headsup_off" />
+        <android.dwitherell.tinkerings.utils.SeekBarPreference android:title="@string/headsup_timeout_title" android:summary="@string/seekbar_summary" android:key="heads_up_timeout" android:defaultValue="37" android:dialogMessage="@string/headsup_timeout_dialogtitle" android:max="100" android:text="@string/headsup_timeout_units" android:dependency="heads_up_enabled" custom:displayfactor="@integer/headsup_factor" custom:decimalsshown="@integer/headsup_decimalplaces" custom:minval="10"/>
+        <CheckBoxPreference android:title="@string/touchkeylights_title" android:key="screen_touch_capblock" android:summaryOn="@string/touchkeylights_on" android:summaryOff="@string/touchkeylights_off" />
+        <CheckBoxPreference android:title="@string/plugwake_title" android:key="usbplugwake" android:summaryOn="@string/plugwake_on" android:summaryOff="@string/plugwake_off" />
+        <CheckBoxPreference android:title="@string/plugsound_title" android:key="plugsound" android:summaryOn="@string/plugsound_on" android:summaryOff="@string/plugsound_off" />
+        <CheckBoxPreference android:title="@string/lowpowerdim_title" android:key="staylitscreen" android:summaryOn="@string/lowpowerdim_on" android:summaryOff="@string/lowpowerdim_off" />
+        <CheckBoxPreference android:title="@string/pagebuddy_title" android:key="hidereccapps" android:summaryOn="@string/pagebuddy_on" android:summaryOff="@string/pagebuddy_off" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/gencat_3_title">
+        <CheckBoxPreference android:title="@string/lowbatt_title" android:key="hidelowbatt" android:summaryOn="@string/lowbatt_on" android:summaryOff="@string/lowbatt_off" />
+        <CheckBoxPreference android:title="@string/fullbatt_title" android:key="hidefullbatt" android:summaryOn="@string/fullbatt_on" android:summaryOff="@string/fullbatt_off" />
+        <CheckBoxPreference android:title="@string/volpanel_title" android:key="vol_panel_expand_def" android:summaryOn="@string/volpanel_on" android:summaryOff="@string/volpanel_off" />
+        <CheckBoxPreference android:title="@string/earprotect_title" android:key="enable_ear_protect" android:summaryOn="@string/earprotect_on" android:summaryOff="@string/earprotect_off" />
+    </PreferenceCategory>
+</PreferenceScreen>

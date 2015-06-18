@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:title="@string/penwindow_title" android:key="tsm_parts_penwindow" android:summary="@string/penwindow_summary" />
+    <Preference android:title="@string/proxsensor_title" android:key="script_proxsensor" android:summary="@string/proxsensor_summary" />
+    <Preference android:title="@string/proxsensor2_title" android:key="script_proxsensor2" android:summary="@string/proxsensor2_summary" />
+    <Preference android:title="@string/buildproptitle" android:key="buildpropeditor" android:summary="@string/buildpropsummary" />
+</PreferenceScreen>

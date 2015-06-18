@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SeekBarPref">
+        <attr name="minval" format="integer" />
+        <attr name="stepval" format="integer" />
+        <attr name="displayfactor" format="integer" />
+        <attr name="decimalsshown" format="integer" />
+        <attr name="animtype" format="integer" />
+        <attr name="percentage" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="ColorPickPref">
+        <attr name="alphaSlider" format="boolean" />
+        <attr name="alphaText" format="boolean" />
+        <attr name="colorgroupname" format="string" />
+    </declare-styleable>
+</resources>

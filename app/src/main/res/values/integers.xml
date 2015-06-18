@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="headsup_factor">100</integer>
+    <integer name="headsup_decimalplaces">1</integer>
+    <integer name="winaniscale_factor">1</integer>
+    <integer name="winaniscale_decimalplaces">1</integer>
+    <integer name="trananiscale_factor">1</integer>
+    <integer name="trananiscale_decimalplaces">1</integer>
+    <integer name="anidurscale_factor">1</integer>
+    <integer name="anidurscale_decimalplaces">1</integer>
+    <integer name="locktime_factor">1000</integer>
+    <integer name="slidetab_title_offset_dips">24</integer>
+    <integer name="slidetab_view_top_padding_dips">10</integer>
+    <integer name="slidetab_view_padding_dips">16</integer>
+    <integer name="slidetab_view_text_size_sp">12</integer>
+    <integer name="slidetab_bottom_border_thickness_dips">0</integer>
+    <integer name="slidetab_selected_indicator_thickness_dips">3</integer>
+</resources>

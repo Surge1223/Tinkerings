@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto" >
+    <PreferenceCategory android:title="@string/misccat_0_title">
+        <CheckBoxPreference android:title="@string/s5settings_title" android:key="grid_layout_ui" android:summaryOn="@string/s5settings_summary_on" android:summaryOff="@string/s5settings_summary_off" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/misccat_1_title">
+        <CheckBoxPreference android:title="@string/xchange_title" android:key="security_exchange_skip" android:summaryOn="@string/xchange_summary_on" android:summaryOff="@string/xchange_summary_off" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/misccat_2_title">
+        <CheckBoxPreference android:title="@string/steadring_title" android:key="steadyring" android:summaryOn="@string/steadring_summary_on" android:summaryOff="@string/steadring_summary_off" />
+        <CheckBoxPreference android:title="@string/callend_title" android:key="disconnectscreen" android:summaryOn="@string/callend_summary_on" android:summaryOff="@string/callend_summary_off" />
+        <CheckBoxPreference android:title="@string/callrec_title" android:key="callrecordshow" android:summaryOn="@string/callrec_summary_on" android:summaryOff="@string/callrec_summary_off" />
+        <CheckBoxPreference android:title="@string/callcont_title" android:key="contacts_call_icon" android:summaryOn="@string/callcont_summary_on" android:summaryOff="@string/callcont_summary_off" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/misccat_3_title">
+        <CheckBoxPreference android:title="@string/wallscroll_title" android:key="stock_launcher_scroll" android:summaryOn="@string/wallscroll_summary_on" android:summaryOff="@string/wallscroll_summary_off" />
+        <CheckBoxPreference android:title="@string/infscroll_title" android:key="stock_launcher_loop" android:summaryOn="@string/infscroll_summary_on" android:summaryOff="@string/infscroll_summary_off" />
+        <CheckBoxPreference android:title="@string/showhideapp_title" android:key="hide_or_disable" android:summaryOn="@string/showhideapp_summary_on" android:summaryOff="@string/showhideapp_summary_off" />
+        <CheckBoxPreference android:title="@string/custhomeup_title" android:key="stock_launcher_upswipe" android:summaryOn="@string/custhomeup_summary_on" android:summaryOff="@string/custhomeup_summary_off" />
+        <Preference android:title="@string/custhomeupset_title" android:key="custom_upswipe_app" android:summary="@string/picker_summary" android:dependency="stock_launcher_upswipe" />
+    </PreferenceCategory>
+</PreferenceScreen>

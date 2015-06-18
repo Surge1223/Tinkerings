@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto" >
+    <CheckBoxPreference android:title="@string/smileyenter_title" android:key="smiley_mms" android:summaryOn="@string/smileyenter_summary_on" android:summaryOff="@string/smileyenter_summary_off" />
+    <CheckBoxPreference android:title="@string/nettime_title" android:key="mms_sent_stamp" android:summaryOn="@string/nettime_summary_on" android:summaryOff="@string/nettime_summary_off" />
+    <CheckBoxPreference android:title="@string/nologs_title" android:key="mmssms_logblock" android:summaryOn="@string/nologs_summary_on" android:summaryOff="@string/nologs_summary_off" />
+    <CheckBoxPreference android:title="@string/convocolor_title" android:key="mms_convo_color" android:summaryOn="@string/convocolor_summary_on" android:summaryOff="@string/convocolor_summary_off" />
+    <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="mms_send_convo_color" android:title="@string/convocolorsend_title" android:dialogTitle="@string/convocolorsend_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="mms_convo_color" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xff000000" />
+    <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="mms_receive_convo_color" android:title="@string/convocolorrec_title" android:dialogTitle="@string/convocolorrec_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="mms_convo_color" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xff000000" />
+    <CheckBoxPreference android:title="@string/threadcolor_title" android:key="mms_thread_color" android:summaryOn="@string/threadcolor_summary_on" android:summaryOff="@string/threadcolor_summary_off" />
+    <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="mms_send_thread_color" android:title="@string/threadcolorsend_title" android:dialogTitle="@string/threadcolorsend_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="mms_thread_color" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xff000000" />
+    <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="mms_receive_thread_color" android:title="@string/threadcolorrec_title" android:dialogTitle="@string/threadcolorrec_dialogtitle" android:summary="@string/colorpicker_summary" android:dependency="mms_thread_color" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xff000000" />
+</PreferenceScreen>

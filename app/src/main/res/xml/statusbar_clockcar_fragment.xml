@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/statcat_2_title">
+        <ListPreference android:entries="@array/clock_entries" android:title="@string/clockstyle_title" android:key="statusbar_clock_style" android:summary="@string/clockstyle_summary" android:entryValues="@array/clock_values" />
+        <ListPreference android:entries="@array/dowsize_entries" android:title="@string/daymonth_title" android:key="statusbar_day_size" android:summary="@string/daymonth_summary" android:entryValues="@array/dowsize_values" />
+        <ListPreference android:entries="@array/dow_entries" android:title="@string/daymonthtype_title" android:key="statusbar_show_day" android:summary="@string/daymonthtype_summary" android:entryValues="@array/dow_values" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="statusbar_clock_color" android:title="@string/clockcolor_title" android:dialogTitle="@string/clockcolor_title" android:summary="@string/colorpicker_summary" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xffffffff" />
+        <ListPreference android:entries="@array/clock_position_entries" android:title="@string/clockpos_title" android:key="statusbar_clock_position" android:summary="@string/clockpos_summary" android:entryValues="@array/clock_position_values" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/statcat_4_title">
+        <CheckBoxPreference android:title="@string/usecustcarr_title" android:key="statusbar_custom_carrier" android:summaryOn="@string/usecustcarr_summary_on" android:summaryOff="@string/usecustcarr_summary_off" />
+        <CheckBoxPreference android:title="@string/useattcarr_title" android:key="statusbar_att_carrier" android:summaryOn="@string/useattcarr_summary_on" android:summaryOff="@string/useattcarr_summary_off" />
+        <EditTextPreference android:title="@string/carriertxt_set_title" android:key="statusbar_carrier_text" android:dependency="statusbar_custom_carrier" />
+        <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="statusbar_carrier_color" android:title="@string/carrtxtcolor_title" android:dialogTitle="@string/carrtxtcolor_title" android:summary="@string/colorpicker_summary" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xffffffff" />
+    </PreferenceCategory>
+</PreferenceScreen>

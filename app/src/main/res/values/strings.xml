@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TSM Parts</string>
+
+    <!-- For the toolbar... perhaps more will be added...? -->
+    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
+    <string name="action_launchhide">Drawer hide</string>
+
+    <!-- For the widget stuff -->
+    <string name="widget_title_info">Pick a target</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>About</item>
+        <item>Extras</item>
+        <item>BuildProp</item>
+        <item>EditProp</item>
+        <item>Device</item>
+        <item>General</item>
+        <item>HardKeys</item>
+        <item>PowerMenu</item>
+        <item>Lockscreen</item>
+        <item>Statusbar</item>
+        <item>Battery</item>
+        <item>Signal</item>
+        <item>TWiz Apps</item>
+    </string-array>
+
+    <!-- Nav Drawer Fragment names-->
+    <!-- Keep them in order as the titles are in -->
+    <string-array name="nav_drawer_fragments">
+        <item>AboutFragment</item>
+        <item>ExtrasFragment</item>
+        <item>BuildPropFragment</item>
+        <item>EditPropFragment</item>
+        <item>DeviceFragment</item>
+        <item>GeneralFragment</item>
+        <item>HardKeysFragment</item>
+        <item>PowerMenuFragment</item>
+        <item>LockscreenFragment</item>
+        <item>StatusbarFragment</item>
+        <item>BatteryFragment</item>
+        <item>SignalFragment</item>
+        <item>TWizAppsFragment</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>null</item>
+        <item>null</item>
+        <item>null</item>
+        <item>null</item>
+        <item>@drawable/ic_tsm_device</item>
+        <item>@drawable/ic_tsm_general</item>
+        <item>@drawable/ic_tsm_hardkeys</item>
+        <item>@drawable/ic_tsm_powermenu</item>
+        <item>@drawable/ic_tsm_lockscreen</item>
+        <item>@drawable/ic_tsm_status</item>
+        <item>@drawable/ic_tsm_battery</item>
+        <item>@drawable/ic_tsm_signal</item>
+        <item>@drawable/ic_tsm_touchwiz</item>
+    </array>
+
+    <!-- Statusbar sliding tab titles -->
+    <string-array name="stat_tab_items">
+        <item>General</item>
+        <item>Toggles</item>
+        <item>Expanded Statusbar</item>
+        <item>Clock and Carrier</item>
+        <item>Misc</item>
+    </string-array>
+
+    <!-- Statusbar sildingtab Fragment names-->
+    <!-- Keep them in order as the titles are in -->
+    <string-array name="stat_tab_fragments">
+        <item>StatusbarGeneralFragment</item>
+        <item>StatusbarTogglesFragment</item>
+        <item>StatusbarExpandedFragment</item>
+        <item>StatusbarClockCarFragment</item>
+        <item>StatusbarMiscFragment</item>
+    </string-array>
+
+    <!-- TWizApps sliding tab titles -->
+    <string-array name="twizapps_tab_items">
+        <item>General</item>
+        <item>Messaging</item>
+    </string-array>
+
+    <!-- TWizApps sildingtab Fragment names-->
+    <!-- Keep them in order as the titles are in -->
+    <string-array name="twizapps_tab_fragments">
+        <item>TWizAppsGeneralFragment</item>
+        <item>TWizAppsMessagingFragment</item>
+    </string-array>
+
+    <!-- Alpha string for sliding tab -->
+    <string name="tab_indicator_alpha">0x26</string>
+
+    <!-- Color picker strings -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on Color to apply</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#ff000000</string> <!-- should it be #aarrggbb ? -->
+    <string name="hex_check_button_text">PREVIEW</string>
+    <string name="colorpicker_summary">Current color</string>
+    <string name="color_right_arrow">"→"</string>
+    <string name="color_down_arrow">"↓"</string>
+    <string name="longpress_info">Red bordered longpress sets color</string>
+
+    <!-- Seekbar pref string -->
+    <string name="seekbar_summary">$1</string> <!-- should change/remove this, no longer funcitonal as $1 -->
+
+    <!-- For the app picker intent stuff -->
+    <string name="group_applications">Pick from applications</string>
+    <string name="select_custom_short_title">Select custom shortcut</string>
+    <string name="select_custom_apps_title">Select custom application</string>
+    <string name="screen_off">Screen off</string>
+    <string name="powermenu">Power menu</string>
+    <string name="donothing">Do nothing</string>
+    <string name="picker_summary">Not set</string>
+
+    <!-- About Frag strings -->
+    <string name="link_title">XDA Tweaked Note3</string>
+    <string name="link_summary">Click here to check out the xda thread</string>
+    <string name="link_data">http://forum.xda-developers.com/note-3-tmobile/development/temp-t2816437</string>
+    <string name="miscinfo_title">App Info</string>
+    <string name="miscinfo_summary">Click here for changelog and credits</string>
+
+    <!-- Extras Frag strings -->
+    <string name="penwindow_title">Open pen app window</string>
+    <string name="penwindow_summary">Opens default-sized pen window without spen</string>
+    <string name="proxsensor_title">Run proxsensor script</string>
+    <string name="proxsensor_summary">Runs the script for you #lazy</string>
+    <string name="proxsensor2_title">Run proxsensor2 script</string>
+    <string name="proxsensor2_summary">Runs a bit more intensive script - WILL REBOOT</string>
+
+    <!-- BuildProp edit strings -->
+    <string name="buildproptitle">Build.prop editor</string>
+    <string name="buildpropsummary">Click to open build.prop editor</string>
+    <string name="saveprop">Save</string>
+    <string name="discardprop">Discard</string>
+    <string name="deleteprop">Delete</string>
+    <string name="cancelprop">Cancel</string>
+    <string name="editprop_key">Property Key</string>
+    <string name="editprop_name">Property Name</string>
+    <string name="editprop_title">Edit/Add Property</string>
+    <string name="editprop_unsaved_changes_title">Unsaved Changes</string>
+    <string name="editprop_unsaved_changes_message">Would you like to set this property?</string>
+    <string name="editprop_delete_item_title">Delete Item</string>
+    <string name="editprop_delete_item_message">Would you like to delete this property?</string>
+    <string name="editprop_add">Add</string>
+    <string name="editprop_backup">Backup</string>
+    <string name="editprop_restore">Restore</string>
+
+    <!-- Device Frag strings -->
+    <string name="device_info_title">Device info</string>
+    <string name="device_summ">Get general info about your device</string>
+    <string name="title_battery_history">Battery history</string>
+    <string name="summary_battery_history">Summary of how battery has been used</string>
+    <string name="title_battery_information">Battery information</string>
+    <string name="summary_battery_information">Current battery status information</string>
+    <string name="title_usage_statistics">Usage statistics</string>
+    <string name="summary_usage_statistics">Summary of application usage</string>
+    <string name="wifi_title">WiFi information</string>
+    <string name="wifi_summary">Various bits of WiFi relevant information</string>
+
+    <!-- General Frag strings -->
+    <string name="devoption_title">Developer options</string>
+    <string name="devoption_summary">Click here for standard developer options</string>
+    <string name="gencat_0_title">Animation scales</string>
+    <string name="winaniscale_title">Set window animation scale</string>
+    <string name="winaniscale_summary">This gets deleted</string>
+    <string name="winaniscale_dialogtitle">Pick a scale</string>
+    <string name="winaniscale_units">x</string>
+    <string name="trananiscale_title">Set transition animation scale</string>
+    <string name="trananiscale_summary">This gets deleted</string>
+    <string name="trananiscale_dialogtitle">Pick a scale</string>
+    <string name="trananiscale_units">x</string>
+    <string name="anidurscale_title">Set animator duration scale</string>
+    <string name="anidurscale_summary">This gets deleted</string>
+    <string name="anidurscale_dialogtitle">Pick a scale</string>
+    <string name="anidurscale_units">x</string>
+    <string name="gencat_1_title">General</string>
+    <string name="drmblock_title">Disable FLAG_SECURE</string>
+    <string name="drmblock_on">Allow screenshots on secure surface views</string>
+    <string name="drmblock_off">Standard FLAG_SECURE behavior enforced</string>
+    <string-array name="nfc_entries">
+        <item>Screen On</item>
+        <item>Above + Lockscreen</item>
+        <item>Above + Screen Off</item>
+    </string-array>
+    <string name="nfc_title">NFC mod type</string>
+    <string name="nfc_diagtitle">NFC works when&#8230;</string>
+    <string-array name="nfc_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="aircom_title">Set aircommand text color</string>
+    <string name="aircom_dialog_title">Aircommand text color</string>
+    <string name="floatbrows_title">Custom popup popout app</string>
+    <string name="floatbrows_intent_title">Select browser</string>
+    <string name="gencat_2_title">Display</string>
+    <string name="headsup_title">Enable heads up notifications</string>
+    <string name="headsup_on">Heads up notifications enabled</string>
+    <string name="headsup_off">Heads up notifications disabled</string>
+    <string name="headsup_timeout_title">Heads up notification timeout</string>
+    <string name="headsup_timeout_dialogtitle">Pick a duration</string>
+    <string name="headsup_timeout_units">seconds</string>
+    <string name="touchkeylights_title">Disable screen touch key lights</string>
+    <string name="touchkeylights_on">Screen touches do not light capacitive keys</string>
+    <string name="touchkeylights_off">Screen touches light capacitive keys</string>
+    <string name="plugwake_title">Disable wake on un/plug</string>
+    <string name="plugwake_on">Un/plug will not wake the phone</string>
+    <string name="plugwake_off">Un/plug will wake the phone</string>
+    <string name="plugsound_title">Enable sound on plug</string>
+    <string name="plugsound_on">Plug in will follow sound settings</string>
+    <string name="plugsound_off">Plug in only vibrates</string>
+    <string name="lowpowerdim_title">Disable low power dimming</string>
+    <string name="lowpowerdim_on">Screen will not dim with low battery</string>
+    <string name="lowpowerdim_off">Screen dims with low battery</string>
+    <string name="pagebuddy_title">Hide PageBuddy notifications</string>
+    <string name="pagebuddy_on">Hide all PageBuddy related notifications</string>
+    <string name="pagebuddy_off">Show PageBuddy related notifications</string>
+    <string name="gencat_3_title">Sound</string>
+    <string name="lowbatt_title">Disable low battery alert</string>
+    <string name="lowbatt_on">Low battery notification disabled</string>
+    <string name="lowbatt_off">Low battery notification enabled</string>
+    <string name="fullbatt_title">Disable full battery alert</string>
+    <string name="fullbatt_on">Full battery notification disabled</string>
+    <string name="fullbatt_off">Full battery notification enabled</string>
+    <string name="volpanel_title">Volume panel expanded as default</string>
+    <string name="volpanel_on">Expanded volume panel will show as default</string>
+    <string name="volpanel_off">Stock volume panel will show as default</string>
+    <string name="earprotect_title">Enable ear protect</string>
+    <string name="earprotect_on">Headphone volume ear protect on</string>
+    <string name="earprotect_off">Headphone volume ear protect off</string>
+
+    <!-- HardKey frag strings -->
+    <string-array name="volcursor_entries">
+        <item>Does nothing to cursor</item>
+        <item>Moves cursor left/right</item>
+        <item>Moves cursor right/left</item>
+    </string-array>
+    <string-array name="volcursor_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="volcursor_title">Volume cursor control type</string>
+    <string name="volcursor_summary">Does nothing to cursor</string>
+    <string name="volcursor_dialog_title">Volume up/down&#8230;</string>
+    <string name="volcontrol_title">Enable volume music controls</string>
+    <string name="volcontrol_summary_on">Volume longpress will control music when screen off</string>
+    <string name="volcontrol_summary_off">Volume longpress won\'t control music when screen off</string>
+    <string name="volcontrol_up_title">Volume up longpress action</string>
+    <string name="volcontrol_up_summary">Does nothing</string>
+    <string name="volcontrol_up_dialog_title">Volume up longpress will&#8230;</string>
+    <string-array name="volup_entries">
+        <item>Skip</item>
+        <item>Previous</item>
+        <item>Pause</item>
+    </string-array>
+    <string-array name="volup_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="volcontrol_down_title">Volume down longpress action</string>
+    <string name="volcontrol_down_summary">Does nothing</string>
+    <string name="volcontrol_down_dialog_title">Volume down longpress will&#8230;</string>
+    <string-array name="voldown_entries">
+        <item>Skip</item>
+        <item>Previous</item>
+        <item>Pause</item>
+    </string-array>
+    <string-array name="voldown_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="doublehome_stop_title">Disable double press home</string>
+    <string name="doublehome_stop_summary_on">Double tap home disabled</string>
+    <string name="doublehome_stop_summary_off">Stock double-tap home behavior</string>
+    <string name="doublehome_picker_title">Alter double press home</string>
+    <string name="doublehome_picker_summary_on">Use custom target</string>
+    <string name="doublehome_picker_summary_off">Use stock target</string>
+    <string name="doublehome_app_pick">Custom double press home target</string>
+    <string name="longhome_picker_title">Alter long press home</string>
+    <string name="longhome_picker_summary_on">Use custom target</string>
+    <string name="longhome_picker_summary_off">Use stock target</string>
+    <string name="longhome_app_pick">Custom long press home target</string>
+    <string name="longback_picker_title">Alter long press back</string>
+    <string name="longback_picker_summary_on">Use custom target</string>
+    <string name="longback_picker_summary_off">Use stock target</string>
+    <string name="longback_app_pick">Custom long press back target</string>
+    <string name="longmenu_picker_title">Alter long press menu</string>
+    <string name="longmenu_picker_summary_on">Use custom target</string>
+    <string name="longmenu_picker_summary_off">Use stock target</string>
+    <string name="longmenu_picker_app">Custom long press menu target</string>
+    <string name="appkill_title">Long press app-kill</string>
+    <string name="appkill_summary">Disabled</string>
+    <string name="appkill_dialog_title">Map longpress trigger to&#8230;</string>
+    <string-array name="longpress_entries">
+        <item>None</item>
+        <item>Back</item>
+        <item>Menu</item>
+    </string-array>
+    <string-array name="longpress_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- PowerMenu frag strings -->
+    <string name="datatog_title">Show data toggle</string>
+    <string name="airplanetog_title">Show airplane toggle</string>
+    <string name="screenshottog_title">Show screenshot toggle</string>
+    <string name="volumetog_title">Show volume toggles</string>
+    <string name="screenrectog_title">Show screenrecord toggle</string>
+    <string name="screenrec_vidsize_title">Screen recorder video size</string>
+    <string name="screenrec_vidsize_dialog_title">Pick a size</string>
+    <string-array name="screen_recorder_video_sizes">
+        <item>240x400</item>
+        <item>360x640</item>
+        <item>480x800</item>
+        <item>480x854</item>
+        <item>540x960</item>
+        <item>600x1024</item>
+        <item>720x1280</item>
+    </string-array>
+    <string-array name="screen_recorder_video_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string name="screenrec_bitrate_title">Screen recorder video bitrate</string>
+    <string name="screenrec_bitrate_dialog_title">Pick a bitrate</string>
+    <string-array name="screen_recorder_bitrate_entries">
+        <item>100 kB/s</item>
+        <item>250 kB/s</item>
+        <item>500 kB/s</item>
+        <item>1 MB/s</item>
+        <item>2 MB/s</item>
+        <item>3 MB/s</item>
+        <item>4 MB/s</item>
+        <item>5 MB/s</item>
+        <item>10 MB/s</item>
+        <item>20 MB/s</item>
+        <item>50 MB/s</item>
+        <item>100 MB/s</item>
+    </string-array>
+    <string-array name="screen_recorder_bitrate_values">
+        <item>100000</item>
+        <item>250000</item>
+        <item>500000</item>
+        <item>1000000</item>
+        <item>2000000</item>
+        <item>3000000</item>
+        <item>4000000</item>
+        <item>5000000</item>
+        <item>10000000</item>
+        <item>20000000</item>
+        <item>50000000</item>
+        <item>100000000</item>
+    </string-array>
+    <string name="screenrec_audio_title">Record audio</string>
+
+    <!-- Lockscreen frag strings -->
+    <string name="locksettings_title">Lockscreen options</string>
+    <string name="locksettings_summary">Click here for stock lockscreen options</string>
+    <string name="locktime_title">Use custom timeout</string>
+    <string name="locktime_summary_on">Use custom values</string>
+    <string name="locktime_summary_off">Use stock values</string>
+    <string name="locktime_set_title">Set lockscreen timeout</string>
+    <string name="locktime_units">seconds</string>
+    <string name="lockcat_0_title">Lockscreen Options</string>
+    <string name="sviewback_title">Alter SView background</string>
+    <string name="sviewback_summary_on">Use separate uncolorable image</string>
+    <string name="sviewback_summary_off">Use stock options</string>
+    <string name="sviewforce_title">Force SView verification</string>
+    <string name="sviewforce_summary_on">Force system to allow any cover as SView</string>
+    <string name="sviewforce_summary_off">Use stock SView definition</string>
+    <string name="lockdisable_title">Disable lockscreens</string>
+    <string name="lockdisable_summary">Operates separate from stock disable</string>
+    <string name="lockrotate_title">Allow lockscreen rotation</string>
+    <string name="lockrotate_summary_on">Lockscreen rotation allowed</string>
+    <string name="lockrotate_summary_off">No lockscreen rotation</string>
+    <string name="lockstyle_title">Lockscreen style</string>
+    <string name="lockstyle_summary">Unlock style</string>
+    <string-array name="lock_screen_entries">
+        <item>Galaxy Note 3 unlock</item>
+        <item>AOSP unlock</item>
+    </string-array>
+    <string-array name="lock_screen_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string name="aosphapdisable_title">Disable AOSP haptic</string>
+    <string name="aosphapdisable_summary_on">Haptic feedback disabled</string>
+    <string name="aosphapdisable_summary_off">Haptic feedback enabled</string>
+    <string name="quickpin_title">Allow quick pin/pass unlock</string>
+    <string name="quickpin_summary_on">Correct entry does not require OK to unlock</string>
+    <string name="quickpin_summary_off">Must press OK to complete unlocking</string>
+    <string name="seccamwidg_title">Allow secure camera widget</string>
+    <string name="seccamwidg_summary_on">Allows camera widget on secure lockscreens</string>
+    <string name="seccamwidg_summary_off">No camera widget on secure lockscreens</string>
+    <string name="lockcat_1_title">Custom carrier options</string>
+    <string name="carriertxt_title">Use custom carrier</string>
+    <string name="carriertxt_summary_on">Use custom carrier text</string>
+    <string name="carriertxt_summary_off">Use system provided carrier text</string>
+    <string name="carriertxt_set_title">Set carrier text</string>
+    <string name="carriertxt_color_title">Set custom text color</string>
+    <string name="carriertxt_dialog_title">Carrier text color</string>
+    <string name="lockcat_2_title">Hard button options</string>
+    <string name="pmenudis_title">Powermenu disable</string>
+    <string name="pmenudis_summary_on">Power menu will not show on lockscreen</string>
+    <string name="pmenudis_summary_off">Stock power menu behavior</string>
+    <string name="homewakedis_title">Disable home button wake</string>
+    <string name="homewakedis_summary_on">Home button wake disabled</string>
+    <string name="homewakedis_summary_off">Home button wake enabled</string>
+    <string name="locktorch_title">Enable lockscreen flashlight</string>
+    <string name="locktorch_summary_on">Longpress Home on lockscreen to turn on flashlight</string>
+    <string name="locktorch_summary_off">Longpress home on lockscreen does nothing</string>
+    <string name="volwake_title">Enable volume wake</string>
+    <string name="volwake_summary">Requires kernel support or device plugged in</string>
+    <string name="lockcat_3_title">Finger ink options</string>
+    <string name="fingink_title">Enable finger ink</string>
+    <string name="fingink_summary_on">Finger and spen ink ripple unlock effect</string>
+    <string name="fingink_summary_off">Standard only-spen ink ripple unlock effect</string>
+    <string name="customink_title">Use custom ink color</string>
+    <string name="customink_summary_on">Use custom color for ink effect</string>
+    <string name="customink_summary_off">Use stock ink effect colors</string>
+    <string name="customink_set_title">Set ink color</string>
+    <string name="customink_dialog_title">Finger ink color</string>
+
+    <!-- Statusbar frag strings -->
+    <string name="s5sysui_title">Enable S5 SystemUI</string>
+    <string name="s5sysui_summary_on">Using S5 SystemUI</string>
+    <string name="s5sysui_summary_off">Using N3 SystemUI</string>
+    <string name="statbright_title">Enable statusbar brightness</string>
+    <string name="statbright_summary_on">Longpress statusbar to control brightness</string>
+    <string name="statbright_summary_off">Longpress does nothing</string>
+    <string name="statdubtap_title">Enable doubletap sleep</string>
+    <string name="statdubtap_summary_on">Double tap statusbar turns off screen</string>
+    <string name="statdubtap_summary_off">Double tap statusbar does nothing</string>
+    <string name="dimblock_title">Disable statusbar dimming</string>
+    <string name="dimblick_summary_on">Statusbar icons will not dim</string>
+    <string name="dimblock_summary_off">Stock icon dimming behavior</string>
+    <string name="statbarcolor_title">Custom statusbar color</string>
+    <string name="statbarcolor_summary_on">Background uses color</string>
+    <string name="statbarcolor_summary_off">Stock background color</string>
+    <string name="statbarcolor_set_title">Set statusbar color</string>
+    <string name="statbarcolor_set_dialogtitle">Statusbar color</string>
+    <string name="toglocation_title">Toggle location</string>
+    <string-array name="toggle_entries">
+        <item>Top/Stock</item>
+        <item>Bottom</item>
+        <item>Hidden</item>
+    </string-array>
+    <string-array name="toggle_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="toglocation_summary">Change toggle location</string>
+    <string name="stocktog_title">Stock toggle options</string>
+    <string name="stocktog_summary">Click here to rearrange toggle order</string>
+    <string name="togreset_title">Toggle reset</string>
+    <string name="togreset_summary">Click here to reset toggle list</string>
+    <string name="maxscrolltog_title">Max number of scrollable toggles</string>
+    <string name="maxscrolltog_dialogtitle">Pick a number</string>
+    <string name="maxscrolltog_units">toggles</string>
+    <string name="toglimit_title">Limit panel toggle number</string>
+    <string name="toglimit_summary_on">Same limit as above</string>
+    <string name="toglimit_summary_off">No limit - stock behavior</string>
+    <string name="porttog_title">Portrait toggle number</string>
+    <string name="porttog_dialogtitle">Pick a number</string>
+    <string name="porttog_units">toggles</string>
+    <string name="landtog_title">Landscape toggle number</string>
+    <string name="landtog_dialogtitle">Pick a number</string>
+    <string name="landtog_units">toggles</string>
+    <string name="togcolor_title">Use custom toggle color</string>
+    <string name="togcolor_summary_on">Use custom color</string>
+    <string name="togcolor_summary_off">Use stock color</string>
+    <string name="togiconset_title">Custom toggle icon color</string>
+    <string name="togiconset_dialogtitle">Toggle icon color</string>
+    <string name="togindset_title">Custom toggle indicator color</string>
+    <string name="togindset_dialogtitle">Toggle indicator color</string>
+    <string name="togtxtrm_title">Remove toggle text</string>
+    <string name="togtxtrm_summary_on">Toggle text removed</string>
+    <string name="togtxtrm_summary_off">Toggle text visible</string>
+    <string name="togtxtcolor_title">Use custom toggle text color</string>
+    <string name="togtxtcolor_summary_on">Use custom color</string>
+    <string name="togtxtcolor_summary_off">Use stock color</string>
+    <string name="togtxtset_title">Custom toggle text color</string>
+    <string name="togtxtset_dialogtitle">Toggle text color</string>
+    <string name="togtarg_title">Use custom TSM toggle longpress</string>
+    <string name="togtarg_summary_on">Use custom target</string>
+    <string name="togtarg_summary_off">Open pen window</string>
+    <string name="togtargset_title">Custom TSM longpress target</string>
+    <string name="showbright_title">Show brightness slider</string>
+    <string name="showbright_summary_on">Shows brightness slider</string>
+    <string name="showbright_summary_off">Hides brightness slider</string>
+    <string name="showvol_title">Show volume slider</string>
+    <string name="showvol_summary_on">Shows volume slider</string>
+    <string name="showvol_summary_off">Hides volume slider</string>
+    <string name="statcat_2_title">Clock Options</string>
+    <string name="clockstyle_title">Clock style</string>
+    <string-array name="clock_entries">
+        <item>Normal</item>
+        <item>Small AM/PM</item>
+        <item>No AM/PM</item>
+        <item>No Clock</item>
+    </string-array>
+    <string-array name="clock_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string name="clockstyle_summary">Change the clock style</string>
+    <string name="daymonth_title">Day Month style</string>
+    <string-array name="dowsize_entries">
+        <item>None</item>
+        <item>Small</item>
+        <item>Large</item>
+    </string-array>
+    <string-array name="dowsize_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="daymonth_summary">Abbreviated date or day of week size options with clock</string>
+    <string name="daymonthtype_title">Day Month format</string>
+    <string-array name="dow_entries">
+        <item>DOW</item>
+        <item>DOW DD</item>
+        <item>MM/DD/YY</item>
+        <item>DD/MM/YY</item>
+        <item>MM/DD</item>
+        <item>DD/MM</item>
+        <item>MTH DD</item>
+        <item>DOW MTH DD</item>
+    </string-array>
+    <string-array name="dow_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string name="daymonthtype_summary">Format for Day Month style</string>
+    <string name="clockcolor_title">Clock color</string>
+    <string name="clockpos_title">Clock position</string>
+    <string-array name="clock_position_entries">
+        <item>Left</item>
+        <item>Center</item>
+        <item>Right</item>
+        <item>None</item>
+    </string-array>
+    <string-array name="clock_position_values">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+        <item>3</item>
+    </string-array>
+    <string name="clockpos_summary">Change the clock location</string>
+    <string name="notiback_title">Notification background type</string>
+    <string name="notiback_summary">Choose a background type</string>
+    <string-array name="notiback_entries">
+        <item>Static image</item>
+        <item>Animated</item>
+        <item>Custom color</item>
+    </string-array>
+    <string-array name="notiback_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="noticustimg_title">Image source</string>
+    <string name="noticustimg_summary_on">Use custom image</string>
+    <string name="noticustimg_summary_off">Use stock image</string>
+    <string name="noticustimgset_title">Custom image target</string>
+    <string name="noticustimgalpha_title">Custom image alpha</string>
+    <string name="noticustimgalpha_dialogtitle">Pick an alpha level</string>
+    <string name="noticustimgalpha_units">%</string>
+    <string name="noticolor_title">Set notification color</string>
+    <string name="noticolor_dialogtitle">Notification bg color</string>
+    <string name="anihandle_title">Animated close handle</string>
+    <string name="anihandle_summary_on">Handle uses animation</string>
+    <string name="anihandle_summary_off">Stock close handle</string>
+    <string name="customdatetarg_title">Use custom Date/Clock target</string>
+    <string name="customdatetarg_summary_on">Launch custom target on click</string>
+    <string name="customdatetarg_summary_off">Stock target on click</string>
+    <string name="customdatetarg_set_title">Custom Date/Clock target</string>
+    <string name="dateclockcolor_title">Date/Clock color</string>
+    <string name="hidenonoti_title">Hide no notifications</string>
+    <string name="hidenonoti_summary_on">Hides No notification text</string>
+    <string name="hidenonoti_summary_off">Shows No notification text</string>
+    <string name="showcleartop_title">Show clear in header</string>
+    <string name="showcleartop_summary_on">Clear all button next to Settings</string>
+    <string name="showcleartop_summary_off">Stock Clear all button location</string>
+    <string name="hidenotitext_title">Hide notifications</string>
+    <string name="hidenotitext_summary_on">Hides Notification text bar</string>
+    <string name="hidenotitext_summary_off">Shows Notification text bar</string>
+    <string name="hideongoing_title">Block Ongoing in pulldown</string>
+    <string name="hideongoing_summary_on">No ongoing notifications will show in pulldown</string>
+    <string name="hideongoing_summary_off">Ongoing notifications show in pulldown</string>
+    <string name="statcat_4_title">Carrier Options</string>
+    <string name="usecustcarr_title">Use custom carrier</string>
+    <string name="usecustcarr_summary_on">Use custom carrier text</string>
+    <string name="usecustcarr_summary_off">Use system provided carrier text</string>
+    <string name="useattcarr_title">Use ATT carrier</string>
+    <string name="useattcarr_summary_on">Use ATT-style carrier</string>
+    <string name="useattcarr_summary_off">No carrier in statusbar</string>
+    <string name="custcarrtxt_title">Set carrier text</string>
+    <string name="carrtxtcolor_title">Carrier text color</string>
+    <string name="hidenfc_title">Hide NFC</string>
+    <string name="hidenfc_summary_on">Hides NFC icon</string>
+    <string name="hidenfc_summary_off">Shows NFC icon</string>
+    <string name="hideime_title">Hide IME</string>
+    <string name="hideime_summary_on">Hides input method notification</string>
+    <string name="hideime_summary_off">Shows input method notification</string>
+    <string name="hidealarm_title">Hide alarm</string>
+    <string name="hidealarm_summary_on">Hides alarm icon</string>
+    <string name="hidealarm_summary_off">Shows alarm icon</string>
+    <string name="hidebtooth_title">Hide bluetooth</string>
+    <string name="hidebtooth_summary_on">Hides bluetooth icon</string>
+    <string name="hidebtooth_summary_off">Shows bluetooth icon</string>
+    <string name="hidesound_title">Hide sound</string>
+    <string name="hidesound_summary_on">Hides vibration and silent icons</string>
+    <string name="hidesound_summary_off">Shows vibration and silent icons</string>
+    <string name="hidewificall_title">Hide wificall</string>
+    <string name="hidewificall_summary_on">Hides wifi calling icon but still shows in pulldown</string>
+    <string name="hidewificall_summary_off">Shows wifi calling icon in statusbar and pulldown</string>
+    <string name="hidenosim_title">Hide no sim</string>
+    <string name="hidenosim_summary_on">Hide no sim notification</string>
+    <string name="hidenosim_summary_off">Show no sim notification</string>
+
+    <!-- Battery frag strings -->
+    <string name="batcat_0_title">Battery bar and text</string>
+    <string name="batbar_title">MIUI battery</string>
+    <string-array name="batterybar_entries">
+        <item>None</item>
+        <item>Regular</item>
+        <item>Mirror</item>
+    </string-array>
+    <string-array name="batterybar_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="batbar_summary">Battery bar options</string>
+    <string name="batbaranim_title">Enable charging animation</string>
+    <string name="batbaranim_summary_on">Show animation while charging</string>
+    <string name="batbaranim_summary_off">Do not show charging animation</string>
+    <string name="battext_title">Show battery percentage</string>
+    <string name="battext_summary_on">Displays battery percent</string>
+    <string name="battext_summary_off">Do not display battery percent</string>
+    <string name="batcat_1_title">Battery Color Options</string>
+    <string name="batcolorvary_title">Battery level colors</string>
+    <string name="batcolorvary_summary_on">Text color varies with battery strength</string>
+    <string name="batcolorvary_summary_off">Use single color for text</string>
+    <string name="batonecolor_title">Single battery color</string>
+    <string name="batonecolor_dialogtitle">Battery color</string>
+    <string name="batcharge_title">Charging</string>
+    <string name="batcharge_dialogtitle">Charging color</string>
+    <string name="batlvl1_title">Battery level: 41&#8211;100%</string>
+    <string name="batlvl1_dialogtitle">Reg battery color</string>
+    <string name="batlvl2_title">Battery level: 16&#8211;40%</string>
+    <string name="batlvl2_dialogtitle">Mid battery color</string>
+    <string name="batlvl3_title">Battery level: 0&#8211;15%</string>
+    <string name="batlvl3_dialogtitle">Low battery color</string>
+    <string name="batcat_2_title">Battery icon options</string>
+    <string name="baticon_type_title">Battery icon type</string>
+    <string-array name="battery_entries">
+        <item>4.4 Stock</item>
+        <item>4.4 Stock w/ Percent</item>
+        <item>4.3 Image based</item>
+        <item>3minit</item>
+        <item>None</item>
+    </string-array>
+    <string-array name="battery_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>3</item>
+    </string-array>
+    <string name="baticon_type_summary">Choose an icon type</string>
+    <string name="minit_title">3minit Settings</string>
+    <string name="baticoncolor_title">Enable custom battery color</string>
+    <string name="baticoncolor_summary_on">Can choose color of 4.4&#8211;based battery</string>
+    <string name="baticoncolor_summary_off">Use stock colors for 4.4&#8211;based battery</string>
+    <string name="bat44color_title">4.4 Battery color</string>
+    <string name="batcolor_bolt_title">4.4 Battery text/bolt color</string>
+    <string name="batcolor_bolt_dialogtitle">4.4 Text/bolt color</string>
+
+    <!-- Signal frag strings -->
+    <string name="sigcat_0_title">Icon Options</string>
+    <string name="carriericon_title">Alter TMo/ATT data icon type</string>
+    <string name="carriericon_summary_on">Show accurate connection type</string>
+    <string name="carriericon_summary_off">Show stock connection type</string>
+    <string name="datastick_title">Enable persistent data icon</string>
+    <string name="datastick_summary_on">Show data icon while on wifi</string>
+    <string name="datastick_summary_off">Stock data icon behavior on wifi</string>
+    <string name="hidesig_title">Hide signal</string>
+    <string name="hidesig_summary_on">Hides signal strength bars</string>
+    <string name="hidesig_summary_off">Shows signal strength bars</string>
+    <string name="sigcat_1_title">Signal Text Color Options</string>
+    <string name="showdbm_title">Show dbm</string>
+    <string name="showdbm_summary_on">Display dbm value</string>
+    <string name="showdbm_summary_off">No dbm values are displayed</string>
+    <string name="dbmlabel_title">Show dBm label</string>
+    <string name="dbmlabel_summary_on">Show dBm after value</string>
+    <string name="dbmlabel_summary_off">Do not show dBm after value</string>
+    <string name="varycolor_title">Use signal strength colors</string>
+    <string name="varycolor_summary_on">Text color varies with signal strength</string>
+    <string name="varycolor_summary_off">Use single color for text</string>
+    <string name="onecolor_title">Single color</string>
+    <string name="onecolor_dialogtitle">Signal text color</string>
+    <string name="lowest_title">dBm: -105 or less</string>
+    <string name="lowest_dialogtitle">Lowest signal color</string>
+    <string name="low_title">dBm: -105 to -95</string>
+    <string name="low_dialogtitle">Low signal color</string>
+    <string name="medium_title">dBm: -95 to -85</string>
+    <string name="medium_dialogtitle">Midrange signal color</string>
+    <string name="high_title">dBm: -85 to -75</string>
+    <string name="high_dialogtitle">High signal color</string>
+    <string name="highest_title">dBm: -75 or greater</string>
+    <string name="highest_dialogtitle">Highest signal color</string>
+
+    <!-- Touchwiz app/Misc frag strings -->
+    <string name="misccat_0_title">Settings options</string>
+    <string name="s5settings_title">S5 Settings layout</string>
+    <string name="s5settings_summary_on">Switch to S5 grid layout Settings</string>
+    <string name="s5settings_summary_off">Standard N3 SecSettings UI layout</string>
+    <string name="misccat_1_title">Email/Exchange settings</string>
+    <string name="xchange_title">Bypass exchange security setup</string>
+    <string name="xchange_summary_on">Bypassing security policy at setup</string>
+    <string name="xchange_summary_off">Standard security policies used at setup</string>
+    <string name="misccat_2_title">Contacts and phone settings</string>
+    <string name="steadring_title">Disable ascending ringer</string>
+    <string name="steadring_summary_on">Ascending ring disabled</string>
+    <string name="steadring_summary_off">Ascending ring enabled</string>
+    <string name="callend_title">Skip call ended screen</string>
+    <string name="callend_summary_on">No call ended screen</string>
+    <string name="callend_summary_off">Stock end call screen</string>
+    <string name="callrec_title">Show record button</string>
+    <string name="callrec_summary_on">Record button shows in calls</string>
+    <string name="callrec_summary_off">Add Call shows in calls</string>
+    <string name="callcont_title">Show call icon in log</string>
+    <string name="callcont_summary_on">Shows call icon in call log</string>
+    <string name="callcont_summary_off">Does not show call icon in call log</string>
+    <string name="misccat_3_title">Launcher settings</string>
+    <string name="wallscroll_title">Enable scrollable wallpaper</string>
+    <string name="wallscroll_summary_on">Wallpapers will scroll</string>
+    <string name="wallscroll_summary_off">Wallpapers will not scroll</string>
+    <string name="infscroll_title">Enable infinite scroll</string>
+    <string name="infscroll_summary_on">Launcher pages infinitely loop</string>
+    <string name="infscroll_summary_off">Launcher pages do not loop</string>
+    <string name="showhideapp_title">Enable hide apps option</string>
+    <string name="showhideapp_summary_on">Option to hide apps from app drawer</string>
+    <string name="showhideapp_summary_off">Stock option to uninstall/disable apps</string>
+    <string name="custhomeup_title">Alter home upswipe target</string>
+    <string name="custhomeup_summary_on">Opens custom app</string>
+    <string name="custhomeup_summary_off">Opens Magazine</string>
+    <string name="custhomeupset_title">Custom home upswipe target</string>
+    <string name="smileyenter_title">Enable smiley button</string>
+    <string name="smileyenter_summary_on">Replace stock Enter key with Smiley key</string>
+    <string name="smileyenter_summary_off">Use stock Enter key</string>
+    <string name="nettime_title">Network time stamp</string>
+    <string name="nettime_summary_on">Use network time sent for received time stamp</string>
+    <string name="nettime_summary_off">Use stock phone time received for time stamp</string>
+    <string name="nologs_title">Disable sms/mms logs</string>
+    <string name="nologs_summary_on">Prevent mms/sms from being logged</string>
+    <string name="nologs_summary_off">Use stock mms/sms logging behavior</string>
+    <string name="convocolor_title">Enable convo send/receive color</string>
+    <string name="convocolor_summary_on">Use custom send/receive colors</string>
+    <string name="convocolor_summary_off">Use stock colors</string>
+    <string name="convocolorsend_title">Set send color</string>
+    <string name="convocolorsend_dialogtitle">Convo sent txt color</string>
+    <string name="convocolorrec_title">Set receive color</string>
+    <string name="convocolorrec_dialogtitle">Convo receive txt color</string>
+    <string name="threadcolor_title">Enable thread list send/receive color</string>
+    <string name="threadcolor_summary_on">Use custom send/receive colors</string>
+    <string name="threadcolor_summary_off">Use stock colors</string>
+    <string name="threadcolorsend_title">Set send color</string>
+    <string name="threadcolorsend_dialogtitle">Thread sent txt color</string>
+    <string name="threadcolorrec_title">Set receive color</string>
+    <string name="threadcolorrec_dialogtitle">Thread receive txt color</string>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+    <!-- Stuff for the info alertdialog -->
+    <string name="alertdiagtitle">Changelog</string>
+    <string name="setpositive">OK</string>
+    <string name="setnegative">Credits</string>
+    <string name="alertthankstitle">Thanks</string>
+    <string name="changelog"><![CDATA[ <font color="ffffff"><center><b><u>=== VERSION 1.0 ===</b></u></center><ul>
+<li>Imported intent-based app picker, switches and their logic from original TSM Parts</li>
+<li>Added in sliding navdrawer for app navigation<ul>
+<li>Reorganized original TSM Parts structure based on new navigation approach</li>
+<li>Did lots of minor UI things involving animated fragment switching, backstack handling, actionbar options when interacting with navdrawer</li></ul></li>
+<li>Added in widget that replicated sliding navdrawer options</li>
+<li>Replaced color picker with one created by margaritov and edited by those responsible for SlimRom<ul>
+<li>Modified color picker to allow dimming of widget when preference disabled</li>
+<li>Also added back alpha slider text and made it represent current alpha as %</li>
+<li>Fixed minor hex-picking int-to-HSV-to-int issue</li>
+<li>Edited color picker layout to show better in landscape</li>
+<li>Set default preference color as the 3rd of the preset options in color picker</li>
+<li>Made the first 2 white/black, and the last 3 can be set by the enduser via a longpress</li></ul></li>
+<li>Added ability to hide/show app in app drawer</li>
+<li>Added in custom seekbar preference for number picking to replace original number picker in TSM Parts</li>
+<li>Tossed in a hidden area&#8230 can you find it?</li>
+<li>For app picking options - there is now a preset TSM Parts one that can be used (no more shortcut as there is now a widget)</li>
+<li>Incorporated libsupersu to properly handle root-required tasks thanks to Chainfire</li></ul></font>]]></string>
+    <string name="credits"><![CDATA[ <font color="ffffff"><center><b><u>=== MANY THANKS GO TO ===</b></u></center><ul>
+<li>The folks behind TeamSbrissenMod - for none of this would be were it not for them</li>
+<li>Chainfire for the super easy-to-implement libsupersu library</li>
+<li>margaritov and those behind slim rom for the great color picker I tinkered with</li>
+<li>wally3614 for image and icon work</li>
+<li>daveyannihilation for icon work</li>
+<li>Surge1223 for getting me started on this android studio adventure</li>
+<li>Cheekybastards for living up to their namesake</li>
+<li>Goldie, txr33, and the rest of the Alliance folks for letting me idly hang out and learn as I do</li>
+<li>Gunthermic, for testing and great ideas!</li>
+<li>All those who have contributed to stackoverflow and various other resources for java/app creation</li></ul></font>]]></string>
+
+</resources>
