@@ -13,6 +13,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 class SlidingTabStrip extends LinearLayout {
@@ -53,6 +54,7 @@ class SlidingTabStrip extends LinearLayout {
     void onViewPagerPageChanged(int position, float positionOffset) {
         mSelectedPosition = position;
         mSelectionOffset = positionOffset;
+        //Toast.makeText(getContext(),""+position,Toast.LENGTH_SHORT).show();
         invalidate();
     }
 

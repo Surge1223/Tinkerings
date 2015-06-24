@@ -19,6 +19,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +45,13 @@ public class BuildPropFragment extends ListFragment {
         private ArrayList<Map<String, String>> proplist;
         private String[] from = { "title", "description" };
         private int[] to = { R.id.prop_title, R.id.prop_desc };
+
+        // custom Comparator object that sorts hashmap arraylist by the title entry
+        private Comparator<Map<String, String>> mapComparator = new Comparator<Map<String, String>>() {
+            public int compare(Map<String, String> m1, Map<String, String> m2) {
+                return m1.get("title").compareTo(m2.get("title"));
+            }
+        };
 
         public LoadProp setInits(Context context, ListView list, Boolean restore) {
             this.context = context;
@@ -94,6 +103,8 @@ public class BuildPropFragment extends ListFragment {
                 mTryCatchFail = true;
             }
 
+            //an attempt at sorting the build.prop mess by title
+            Collections.sort(proplist, mapComparator);
             return null;
         }
 
@@ -124,7 +135,7 @@ public class BuildPropFragment extends ListFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        return (View) inflater.inflate(R.layout.propeditmain, container, false);
+        return (View) inflater.inflate(R.layout.listviewmain, container, false);
     }
 
     @Override

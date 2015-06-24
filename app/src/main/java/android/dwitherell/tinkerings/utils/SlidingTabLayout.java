@@ -5,8 +5,12 @@ package android.dwitherell.tinkerings.utils;
  * Heavily borrowed from terkinarslan material sample
  */
 
+import android.app.Fragment;
 import android.content.Context;
 import android.dwitherell.tinkerings.R;
+import android.dwitherell.tinkerings.StatusbarFragment;
+import android.dwitherell.tinkerings.TWizAppsFragment;
+import android.dwitherell.tinkerings.TinkerActivity;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.view.PagerAdapter;
@@ -15,12 +19,12 @@ import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 public class SlidingTabLayout extends HorizontalScrollView {
     private int mTitleOffset;
@@ -30,6 +34,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private ViewPager mViewPager;
     private SparseArray<String> mContentDescriptions = new SparseArray<String>();
     private ViewPager.OnPageChangeListener mViewPagerPageChangeListener;
+
+    private Fragment basefrag;
 
     private final SlidingTabStrip mTabStrip;
 
@@ -88,6 +94,10 @@ public class SlidingTabLayout extends HorizontalScrollView {
             viewPager.addOnPageChangeListener(mPageListener);
             populateTabStrip();
         }
+    }
+
+    public void setInitFrag(Fragment frag) {
+        basefrag = frag;
     }
 
     protected TextView createDefaultTabView(Context context) {
@@ -172,6 +182,14 @@ public class SlidingTabLayout extends HorizontalScrollView {
         }
     }
 
+    public void storePosition() {
+        if (basefrag instanceof StatusbarFragment) {
+            TinkerActivity.LAST_STAT_BAR_TAB = mViewPager.getCurrentItem();
+        } else if (basefrag instanceof TWizAppsFragment) {
+            TinkerActivity.LAST_TWIZ_APP_TAB = mViewPager.getCurrentItem();
+        } else {}
+    }
+
     private class InternalViewPagerListener implements ViewPager.OnPageChangeListener {
         private int mScrollState;
 
@@ -217,6 +235,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
             if (mViewPagerPageChangeListener != null) {
                 mViewPagerPageChangeListener.onPageSelected(position);
             }
+            storePosition();
         }
 
     }
@@ -227,6 +246,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
             for (int i = 0; i < mTabStrip.getChildCount(); i++) {
                 if (v == mTabStrip.getChildAt(i)) {
                     mViewPager.setCurrentItem(i);
+                    storePosition();
                     return;
                 }
             }

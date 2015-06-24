@@ -112,7 +112,7 @@ public class AboutFragment extends PreferenceFragment {
         if (paramPreference == this.mLogoLayout) {
             clickCount += 1;
 
-            if (clickCount > 5) {
+            if (clickCount >= 5) {
                 clickCount = 0;
                 ((TinkerActivity)getActivity()).displayExtra();
             }

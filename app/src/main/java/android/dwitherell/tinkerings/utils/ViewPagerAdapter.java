@@ -5,18 +5,17 @@ package android.dwitherell.tinkerings.utils;
  * Heavily borrowed from terkinarslan material sample
  */
 
-
 import android.app.FragmentManager;
 import android.app.Fragment;
 import android.dwitherell.tinkerings.TinkerActivity;
 import android.support.v13.app.FragmentPagerAdapter;
-
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private String titles[] ;
     private String frags[] ;
     private String mPackageName;
+    private Fragment basefrag;
 
     public ViewPagerAdapter(FragmentManager fm, String[] titles2, String[] frags2) {
         super(fm);

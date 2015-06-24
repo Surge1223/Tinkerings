@@ -98,6 +98,8 @@ public class SeekBarPreference extends DialogPreference implements SeekBar.OnSee
         // Get min and step values for seekbar
         mMin = seekBarStyle.getInt(R.styleable.SeekBarPref_minval, 0);
         mStep = seekBarStyle.getInt(R.styleable.SeekBarPref_stepval, 1);
+
+        seekBarStyle.recycle();
     }
 
     /* DialogPreference methods */
