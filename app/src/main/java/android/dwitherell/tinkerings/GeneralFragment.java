@@ -35,7 +35,6 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
     private static final int ANIMATION_WINDOW = 0;
     private static final int ANIMATION_TRANSITION = 1;
     private static final int ANIMATION_DURATION = 2;
-    private static final String CUSTOM_POPUP_APP_ACTIVITY = "custom_popup_app_activity";
     private static final String ENABLE_EAR_PROTECT = "enable_ear_protect";
     private static final String HEADS_UP_ENABLED = "heads_up_enabled";
     private static final String HEADS_UP_TIMEOUT = "heads_up_timeout";
@@ -44,9 +43,6 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
     private static final String HIDERECCAPPS = "hidereccapps";
     private static final String NFC_TYPE_KEY = "nfc_type_key";
     private static final String PLUGSOUND = "plugsound";
-    private static final int REQUEST_CREATE_SHORTCUT = 3;
-    private static final int REQUEST_PICK_APPLICATION = 2;
-    private static final int REQUEST_PICK_SHORTCUT = 1;
     private static final String SCREEN_TOUCH_CAPBLOCK = "screen_touch_capblock";
     private static final String SKIPFLAGSECURE = "skipflagsecure";
     private static final String STAYLITSCREEN = "staylitscreen";
@@ -57,7 +53,6 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
     Context context;
     private ColorPickerPreference mAirComColor;
     private SeekBarPreference mCustomAnimDur;
-    private Preference mCustomPopupAppPref;
     private SeekBarPreference mCustomTransAnim;
     private SeekBarPreference mCustomWindowAnim;
     private CheckBoxPreference mEarProtect;
@@ -75,41 +70,6 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
     private CheckBoxPreference mVolPanExp;
     private IWindowManager mWindowManager;
 
-    private void completeSetCustomApp(Intent paramIntent)
-    {
-        shortcutPicked(paramIntent.toUri(0), getFriendlyActivityName(paramIntent, false), true);
-    }
-
-    private String getFriendlyActivityName(Intent paramIntent, boolean paramLabelOnly)
-    {
-        PackageManager localPackageManager = getActivity().getPackageManager();
-        ActivityInfo localActivityInfo = paramIntent.resolveActivityInfo(localPackageManager, 1);
-        String str = null;
-        if (localActivityInfo != null)
-        {
-            str = localActivityInfo.loadLabel(localPackageManager).toString();
-            if (TextUtils.isEmpty(str) && (!paramLabelOnly)) {
-                str = localActivityInfo.name;
-            }
-        }
-        if (!TextUtils.isEmpty(str) || (paramLabelOnly)) {
-            return str;
-        }
-        return paramIntent.toUri(0);
-    }
-
-    private String getFriendlyShortcutName(Intent paramIntent)
-    {
-        String str1 = getFriendlyActivityName(paramIntent, true);
-        String str2 = paramIntent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
-        if (!TextUtils.isEmpty(str1) && !TextUtils.isEmpty(str2)) {
-            return str1 + ": " + str2;
-        }
-        if (!TextUtils.isEmpty(str2)) {
-            return str2;
-        }
-        return paramIntent.toUri(0);
-    }
 
 /*
     private int invertBackGroundSpan(int paramTextColor)
@@ -122,15 +82,6 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
         return Color.parseColor("#cc000000");
     }
 */
-    private void pickShort(Preference paramPreference)
-    {
-        Intent localIntent1 = new Intent(Intent.ACTION_MAIN, null);
-        localIntent1.addCategory(Intent.CATEGORY_APP_BROWSER);
-        Intent localIntent2 = new Intent(Intent.ACTION_PICK_ACTIVITY);
-        localIntent2.putExtra(Intent.EXTRA_INTENT, localIntent1);
-        localIntent2.putExtra(Intent.EXTRA_TITLE, getString(R.string.floatbrows_intent_title));
-        startActivityForResult(localIntent2, REQUEST_PICK_APPLICATION);
-    }
 
     private void resetStuff(String paramPackageString) {
         String str = "pkill -TERM -f " + paramPackageString;
@@ -141,22 +92,6 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
     {
         String str = "am startservice -n " + paramPackageString;
         Shell.SU.run(str);
-    }
-
-    private void setCustomAppSummary(Preference apppickpref)
-    {
-        String str1;
-        String str2;
-
-        if ((apppickpref == null) || (apppickpref == this.mCustomPopupAppPref)) {
-            str1 = Settings.Global.getString(getActivity().getContentResolver(), CUSTOM_POPUP_APP_ACTIVITY);
-            if (TextUtils.isEmpty(str1)) {
-                str2 = getResources().getString(R.string.picker_summary);
-            } else {
-                str2 = getFriendlyNameForUri(str1);
-            }
-            this.mCustomPopupAppPref.setSummary(str2);
-        }
     }
 
     private void setListSummary(ListPreference paramListPreference)
@@ -189,40 +124,6 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
     }
 
     public GeneralFragment(){}
-
-    public String getFriendlyNameForUri(String paramUri)
-    {
-        if (paramUri == null) {
-            return null;
-        }
-        try
-        {
-            Intent localIntent = Intent.parseUri(paramUri, 0);
-            if ((Intent.ACTION_MAIN).equals(localIntent.getAction())) {
-                return getFriendlyActivityName(localIntent, false);
-            }
-            return getFriendlyShortcutName(localIntent);
-        }
-        catch (URISyntaxException localURISyntaxException) {
-            return paramUri;
-        }
-    }
-
-    @Override
-    public void onActivityResult(int paramRequest, int paramResult, Intent paramData)
-    {
-        super.onActivityResult(paramRequest, paramResult, paramData);
-        if (paramResult != -1) {
-            return;
-        }
-        switch (paramRequest)
-        {
-            case REQUEST_PICK_APPLICATION:
-                completeSetCustomApp(paramData);
-                return;
-            default:
-        }
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -317,9 +218,6 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
             mEarProtect.setChecked(false);
         }
 
-        /* Here are for preferences related to app picking */
-        this.mCustomPopupAppPref = (localPreferenceScreen.findPreference(CUSTOM_POPUP_APP_ACTIVITY));
-
         /* Here are for preferences related to color picker */
         this.mAirComColor = ((ColorPickerPreference)localPreferenceScreen.findPreference(AIRCOMMAND_TEXT_COLOR));
         this.mAirComColor.setOnPreferenceChangeListener(this);
@@ -407,7 +305,6 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
 
         this.mCustomAnimDur.setOnPreferenceChangeListener(this);
 
-        setCustomAppSummary(null);
         setListSummary(null);
         setPrefSummaryColor(null);
     }
@@ -664,13 +561,6 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
             return true;
         }
 
-        /* For app picker preferences */
-        if (paramPreference == this.mCustomPopupAppPref)
-        {
-            pickShort(paramPreference);
-            return true;
-        }
-
         return false;
     }
 
@@ -678,14 +568,7 @@ public class GeneralFragment extends PreferenceFragment implements Preference.On
     public void onResume()
     {
         super.onResume();
-        setCustomAppSummary(null);
         setListSummary(null);
         setPrefSummaryColor(null);
-    }
-
-    public void shortcutPicked(String paramURI, String paramFriendlyName, boolean paramIsApp)
-    {
-        Settings.Global.putString(getActivity().getContentResolver(), CUSTOM_POPUP_APP_ACTIVITY, paramURI);
-        this.mCustomPopupAppPref.setSummary(paramFriendlyName);
     }
 }

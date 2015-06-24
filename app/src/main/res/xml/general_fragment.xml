@@ -14,7 +14,6 @@
         <CheckBoxPreference android:title="@string/drmblock_title" android:key="skipflagsecure" android:summaryOn="@string/drmblock_on" android:summaryOff="@string/drmblock_off" />
         <ListPreference android:entries="@array/nfc_entries" android:title="@string/nfc_title" android:key="nfc_type_key" android:dialogTitle="@string/nfc_diagtitle" android:entryValues="@array/nfc_values" />
         <android.dwitherell.tinkerings.utils.ColorPickerPreference android:key="aircommand_text_color" android:title="@string/aircom_title" android:dialogTitle="@string/aircom_dialog_title" android:summary="@string/colorpicker_summary" custom:alphaSlider="true" custom:alphaText="true" android:defaultValue="0xffffffff" />
-        <Preference android:title="@string/floatbrows_title" android:key="custom_popup_app_activity" android:summary="@string/picker_summary" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/gencat_2_title">
         <CheckBoxPreference android:title="@string/headsup_title" android:key="heads_up_enabled" android:summaryOn="@string/headsup_on" android:summaryOff="@string/headsup_off" />

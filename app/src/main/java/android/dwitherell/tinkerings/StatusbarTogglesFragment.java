@@ -47,9 +47,6 @@ public class StatusbarTogglesFragment extends PreferenceFragment implements Pref
     private static final String CUSTOM_DONOTHING_INTENT = "donothingintent";
     private static final String CUSTOM_POWERMENU_INTENT = "powermenuintent";
     private static final String CUSTOM_SCREENOFF_INTENT = "screenoffintent";
-    private static final int REQUEST_CREATE_SHORTCUT = 3;
-    private static final int REQUEST_PICK_APPLICATION = 2;
-    private static final int REQUEST_PICK_SHORTCUT = 1;
 
     private static final String CSC_FLAG = "TMB";
     private static final String NOTIFICATION_PANEL_BRIGHTNESS_ADJUSTMENT = "notification_panel_brightness_adjustment";
@@ -58,7 +55,6 @@ public class StatusbarTogglesFragment extends PreferenceFragment implements Pref
     private static final String LOCK_LIGHT = "lock_light";
 
     Context context;
-    private int mTargetPref = 0;
 
     private CheckBoxPreference mCustomTSMLong;
     private Preference mCustomTSMTarget;
@@ -78,38 +74,6 @@ public class StatusbarTogglesFragment extends PreferenceFragment implements Pref
     private ListPreference mToggleType;
     private CheckBoxPreference mVolSlider;
 
-    private void completeSetCustom(String customkey) {
-        if (customkey.equals(getString(R.string.screen_off))) {
-            shortcutPicked(CUSTOM_SCREENOFF_INTENT, getString(R.string.screen_off), true);
-        }
-
-        if (customkey.equals(getString(R.string.powermenu))) {
-            shortcutPicked(CUSTOM_POWERMENU_INTENT, getString(R.string.powermenu), true);
-        }
-
-        if (customkey.equals(getString(R.string.donothing))) {
-            shortcutPicked(CUSTOM_DONOTHING_INTENT, getString(R.string.donothing), true);
-        }
-
-        if (customkey.equals(getString(R.string.app_name))) {
-            final Intent fragintent = new Intent(context, TinkerActivity.class);
-            fragintent.putExtra(TinkerActivity.EXTRA_START_FRAGMENT, 0);
-            fragintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK + Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-            shortcutPicked(fragintent.toUri(0), getString(R.string.app_name), true);
-        }
-
-    }
-
-    private void completeSetCustomApp(Intent customIntent) {
-        shortcutPicked(customIntent.toUri(0), getFriendlyActivityName(customIntent, false), true);
-    }
-
-    private void completeSetCustomShortcut(Intent shortIntent) {
-        Intent localIntent = shortIntent.getParcelableExtra(Intent.EXTRA_SHORTCUT_INTENT);
-        localIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, shortIntent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME));
-        shortcutPicked(localIntent.toUri(0).replaceAll("com.android.contacts.action.QUICK_CONTACT", Intent.ACTION_VIEW), getFriendlyShortcutName(localIntent), false);
-    }
 
     private String getFriendlyActivityName(Intent activityIntent, boolean labelOnly) {
         PackageManager localPackageManager = getActivity().getPackageManager();
@@ -137,39 +101,6 @@ public class StatusbarTogglesFragment extends PreferenceFragment implements Pref
             return str2;
         }
         return shortIntent.toUri(0);
-    }
-
-    private void pickShort(Preference paramPreference) {
-        Bundle localBundle = new Bundle();
-        Context localContext = getActivity();
-        ArrayList<String> localArrayList1 = new ArrayList<>();
-        localArrayList1.add(getString(R.string.group_applications));
-        localArrayList1.add(getString(R.string.app_name));
-        //localArrayList1.add(getString(R.string.screen_off));
-        //localArrayList1.add(getString(R.string.powermenu));
-        //localArrayList1.add(getString(R.string.donothing));
-
-        localBundle.putStringArrayList(Intent.EXTRA_SHORTCUT_NAME, localArrayList1);
-
-        ArrayList<Intent.ShortcutIconResource> localArrayList2 = new ArrayList<>();
-        localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_launcher_apps));
-        localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.app_icon));
-        //localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_launcher_screenoff));
-        //localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_tsm_powermenu));
-        //localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_launcher_donothing));
-
-        localBundle.putParcelableArrayList(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, localArrayList2);
-
-        Intent localIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
-        localIntent.putExtra(Intent.EXTRA_INTENT, new Intent(Intent.ACTION_CREATE_SHORTCUT));
-        localIntent.putExtra(Intent.EXTRA_TITLE, getString(R.string.select_custom_short_title));
-        localIntent.putExtras(localBundle);
-
-        mTargetPref = 0;
-        if (paramPreference == this.mCustomTSMTarget) {
-            mTargetPref = 1; //CHECK THIS
-        }
-        startActivityForResult(localIntent, REQUEST_PICK_SHORTCUT);
     }
 
     private void setCustomAppSummary(Preference appPickPref) {
@@ -280,26 +211,6 @@ public class StatusbarTogglesFragment extends PreferenceFragment implements Pref
         }
         catch (URISyntaxException localURISyntaxException) {}
         return paramUri;
-    }
-
-    public void onActivityResult(int paramRequest, int paramResult, Intent paramData) {
-        super.onActivityResult(paramRequest, paramResult, paramData);
-        if (paramResult != -1 || paramData == null) {
-            return;
-        }
-        switch (paramRequest)
-        {
-            case REQUEST_PICK_SHORTCUT:
-                processShortcut(paramData, REQUEST_PICK_APPLICATION, REQUEST_CREATE_SHORTCUT);
-                return;
-            case REQUEST_PICK_APPLICATION:
-                completeSetCustomApp(paramData);
-                return;
-            case REQUEST_CREATE_SHORTCUT:
-                completeSetCustomShortcut(paramData);
-                return;
-            default:
-        }
     }
 
     public StatusbarTogglesFragment(){}
@@ -633,7 +544,7 @@ public class StatusbarTogglesFragment extends PreferenceFragment implements Pref
 
         /* For app picker preferences */
         if (paramPreference == this.mCustomTSMTarget) {
-            pickShort(mCustomTSMTarget);
+            ((TinkerActivity)getActivity()).displayAppPicker(paramPreference, R.array.apppicker_2_extras, R.array.apppicker_2_icons_extras, R.array.apppicker_2_keys_extras);
             return true;
         }
 
@@ -675,44 +586,4 @@ public class StatusbarTogglesFragment extends PreferenceFragment implements Pref
         setCustomAppSummary(null);
         setPrefSummaryColor(null);
     }
-
-    void processShortcut(Intent paramIntent, int appInt, int shortcutInt) {
-        String str = paramIntent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
-
-        if (!TextUtils.isEmpty(str)) {
-            if (str.equals(getString(R.string.group_applications))) {
-                Intent localIntent1 = new Intent(Intent.ACTION_MAIN, null);
-                localIntent1.addCategory(Intent.CATEGORY_LAUNCHER);
-                Intent localIntent2 = new Intent(Intent.ACTION_PICK_ACTIVITY);
-                localIntent2.putExtra(Intent.EXTRA_INTENT, localIntent1);
-                localIntent2.putExtra(Intent.EXTRA_TITLE, getString(R.string.select_custom_apps_title));
-                startActivityForResult(localIntent2, appInt);
-                return;
-            }
-
-            if (str.equals(getString(R.string.app_name)) || str.equals(getString(R.string.screen_off)) || str.equals(getString(R.string.powermenu)) || str.equals(getString(R.string.donothing))) {
-                completeSetCustom(str);
-                return;
-            }
-        }
-
-        startActivityForResult(paramIntent, shortcutInt);
-    }
-
-    public void shortcutPicked(String paramURI, String paramFriendlyName, boolean paramIsApp)
-    {
-        switch (this.mTargetPref) {
-            case 1:
-                if (Settings.Global.putString(getActivity().getContentResolver(), CUSTOM_LONG_TSM_TARGET, paramURI)) {
-                    this.mCustomTSMTarget.setSummary(paramFriendlyName);
-                }
-                break;
-
-            default:
-                Toast.makeText(getActivity(), "Error... lost initiating preference...", Toast.LENGTH_SHORT).show();
-                break;
-        }
-        this.mTargetPref = 0;
-    }
-
 }

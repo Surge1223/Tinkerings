@@ -15,6 +15,7 @@ import android.dwitherell.tinkerings.utils.NavDrawerItem;
 import android.dwitherell.tinkerings.utils.NavDrawerListAdapter;
 import android.os.Environment;
 import android.os.Handler;
+import android.preference.Preference;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
@@ -42,7 +42,10 @@ public class TinkerActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     public static final String EXTRA_START_FRAGMENT = "android.dwitherell.tinkerings.EXTRA_START_FRAGMENT";
     // this allows first entries in stringarray to be skipped from navdrawer/widget
-    public static int FRAG_ARRAY_START = 4;
+    public static int FRAG_ARRAY_START = 5;
+
+    public static int LAST_STAT_BAR_TAB;
+    public static int LAST_TWIZ_APP_TAB;
 
     // nav drawer title
     private CharSequence mDrawerTitle;
@@ -67,8 +70,15 @@ public class TinkerActivity extends AppCompatActivity {
     private String[] navMenuTitles;
     private String[] navMenuFrags;
 
+    // info for buildprop editor
     public static String mEditName;
     public static String mEditKey;
+
+    // info for app picker
+    public static String mPrefKey;
+    public static int mTitleArray;
+    public static int mIconArray;
+    public static int mKeyArray;
 
     // For handling quick back/About presses
     Handler myHandler = new Handler();
@@ -124,6 +134,8 @@ public class TinkerActivity extends AppCompatActivity {
         mTitle = mDrawerTitle = getTitle();
 
         mPackageName = getPackageName();
+        LAST_STAT_BAR_TAB = 0;
+        LAST_TWIZ_APP_TAB = 0;
 
         mBackPress = false;
         mIgnoreBack = false;
@@ -263,7 +275,7 @@ public class TinkerActivity extends AppCompatActivity {
             }
             fragtrans.add(R.id.frame_container, frags);
             // add fragment name to custom stack for backstack tracking
-            if (!mBackPress && position != 3) { //Avoid adding EditProp fragment to stack
+            if (!mBackPress && position != 3 && position != 4) { //Avoid adding EditProp or AppPicker fragment to stack
                 fragmentStack.push(navMenuFrags[position]);
             }
             fragtrans.commit();
@@ -327,6 +339,25 @@ public class TinkerActivity extends AppCompatActivity {
         }, 400);
     }
 
+    public void displayAppPicker(Preference object, int titles, int icons, int keys) {
+        // stuff for apppicker fragment
+        mPrefKey = object.getKey();
+        mTitleArray = titles;
+        mIconArray = icons;
+        mKeyArray = keys;
+
+        myHandler.removeCallbacksAndMessages(null);
+        mMenu = true;
+        removeCurrent();
+        // below replicates the visual delay seen when launching frags from navdrawer
+        myHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                displayView(4);
+            }
+        }, 400);
+    }
+
     public void displayEditProp(String name, String key) {
         //put the name and key strings in here for editprop access
         mEditName = name;
@@ -371,7 +402,7 @@ public class TinkerActivity extends AppCompatActivity {
                 myHandler.removeCallbacksAndMessages(null);
 
                 // removes latest (current) entry in custom stack
-                if (mItemPosition != 3) {
+                if (mItemPosition != 3 && mItemPosition != 4) { //but not for editprop or apppicker
                     fragmentStack.pop();
                 }
                 // uses fragment name to find displayview-relevant position
@@ -452,14 +483,15 @@ public class TinkerActivity extends AppCompatActivity {
             menu.setGroupVisible(R.id.action_items, true);
             boolean isbuildprop = (mItemPosition == 2);
             boolean iseditprop = (mItemPosition == 3);
+            boolean isapppicker = (mItemPosition == 4);
             menu.findItem(R.id.action_add).setVisible(isbuildprop);
             menu.findItem(R.id.action_backup).setVisible(isbuildprop);
             menu.findItem(R.id.action_restore).setVisible(isbuildprop);
             menu.findItem(R.id.action_save).setVisible(iseditprop);
             menu.findItem(R.id.action_discard).setVisible(iseditprop);
             menu.findItem(R.id.action_delete).setVisible(iseditprop);
-            menu.findItem(R.id.action_launchhide).setVisible(!(isbuildprop || iseditprop));
-            menu.findItem(R.id.action_about).setVisible(!(isbuildprop || iseditprop));
+            menu.findItem(R.id.action_launchhide).setVisible(!(isbuildprop || iseditprop || isapppicker));
+            menu.findItem(R.id.action_about).setVisible(!(isbuildprop || iseditprop || isapppicker));
         } else {
             menu.setGroupVisible(R.id.action_items, false);
         }

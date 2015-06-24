@@ -4,7 +4,6 @@ package android.dwitherell.tinkerings;
  */
 
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -16,9 +15,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.widget.Toast;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import android.support.annotation.NonNull;
 
 public class HardKeysFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener{
@@ -36,9 +33,6 @@ public class HardKeysFragment extends PreferenceFragment implements Preference.O
     private static final String CUSTOM_SCREENOFF_INTENT = "screenoffintent";
     private static final String LONGPRESSTYPE = "longpresstype";
     private static final String LONG_PRESS_SKIP = "long_press_skip";
-    private static final int REQUEST_CREATE_SHORTCUT = 3;
-    private static final int REQUEST_PICK_APPLICATION = 2;
-    private static final int REQUEST_PICK_SHORTCUT = 1;
     private static final String STOP_DOUBLE_TAP = "stop_double_tap";
     private static final String VOL_CURSOR_TYPE = "vol_cursor_type";
     private static final String VOL_DOWN_TYPE = "vol_down_type";
@@ -55,46 +49,14 @@ public class HardKeysFragment extends PreferenceFragment implements Preference.O
     private CheckBoxPreference mLongPressSkip;
     private ListPreference mLongPressType;
     private CheckBoxPreference mStopDoubleHome;
-    private int mTargetPref = 0;
     private ListPreference mVolCursType;
     private ListPreference mVolDownType;
     private ListPreference mVolUpType;
 
-    private void completeSetCustom(String customkey) {
-        if (customkey.equals(getString(R.string.screen_off))) {
-            shortcutPicked(CUSTOM_SCREENOFF_INTENT, getString(R.string.screen_off), true);
-        }
-
-        if (customkey.equals(getString(R.string.powermenu))) {
-            shortcutPicked(CUSTOM_POWERMENU_INTENT, getString(R.string.powermenu), true);
-        }
-
-        if (customkey.equals(getString(R.string.donothing))) {
-            shortcutPicked(CUSTOM_DONOTHING_INTENT, getString(R.string.donothing), true);
-        }
-
-        if (customkey.equals(getString(R.string.app_name))) {
-            final Intent fragintent = new Intent(getActivity(), TinkerActivity.class);
-            fragintent.putExtra(TinkerActivity.EXTRA_START_FRAGMENT, 0);
-            fragintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK + Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-            shortcutPicked(fragintent.toUri(0), getString(R.string.app_name), true);
-        }
-    }
-
-    private void completeSetCustomApp(Intent customIntent) {
-        shortcutPicked(customIntent.toUri(0), getFriendlyActivityName(customIntent, false), true);
-    }
-
-    private void completeSetCustomShortcut(Intent shortIntent) {
-        Intent localIntent = shortIntent.getParcelableExtra(Intent.EXTRA_SHORTCUT_INTENT);
-        localIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, shortIntent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME));
-        shortcutPicked(localIntent.toUri(0).replaceAll("com.android.contacts.action.QUICK_CONTACT", Intent.ACTION_VIEW), getFriendlyShortcutName(localIntent), false);
-    }
 
     private String getFriendlyActivityName(Intent activityIntent, boolean labelOnly) {
         PackageManager localPackageManager = getActivity().getPackageManager();
-        ActivityInfo localActivityInfo = activityIntent.resolveActivityInfo(localPackageManager, 1);
+        ActivityInfo localActivityInfo = activityIntent.resolveActivityInfo(localPackageManager,PackageManager.GET_ACTIVITIES);
         String str = null;
         if (localActivityInfo != null) {
             str = localActivityInfo.loadLabel(localPackageManager).toString();
@@ -118,45 +80,6 @@ public class HardKeysFragment extends PreferenceFragment implements Preference.O
             return str2;
         }
         return shortIntent.toUri(0);
-    }
-
-    private void pickShort(Preference paramPreference) {
-        Bundle localBundle = new Bundle();
-        Context localContext = getActivity();
-        ArrayList<String> localArrayList1 = new ArrayList<>();
-        localArrayList1.add(getString(R.string.group_applications));
-        localArrayList1.add(getString(R.string.app_name));
-        localArrayList1.add(getString(R.string.screen_off));
-        localArrayList1.add(getString(R.string.powermenu));
-        localArrayList1.add(getString(R.string.donothing));
-
-        localBundle.putStringArrayList(Intent.EXTRA_SHORTCUT_NAME, localArrayList1);
-
-        ArrayList<Intent.ShortcutIconResource> localArrayList2 = new ArrayList<>();
-        localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_launcher_apps));
-        localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.app_icon));
-        localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_launcher_screenoff));
-        localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_tsm_powermenu));
-        localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_launcher_donothing));
-
-        localBundle.putParcelableArrayList(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, localArrayList2);
-
-        Intent localIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
-        localIntent.putExtra(Intent.EXTRA_INTENT, new Intent(Intent.ACTION_CREATE_SHORTCUT));
-        localIntent.putExtra(Intent.EXTRA_TITLE, getString(R.string.select_custom_short_title));
-        localIntent.putExtras(localBundle);
-
-        mTargetPref = 0;
-        if (paramPreference == this.mDoubleHomeAct) {
-            mTargetPref = 1;
-        } else if (paramPreference == this.mLongHomeAct) {
-            mTargetPref = 2;
-        } else if (paramPreference == this.mLongBackAct) {
-            mTargetPref = 3;
-        } else if (paramPreference == this.mLongMenuAct) {
-            mTargetPref = 4;
-        }
-        startActivityForResult(localIntent, REQUEST_PICK_SHORTCUT);
     }
 
     private void setCustomAppSummary(Preference appPickPref) {
@@ -331,28 +254,6 @@ public class HardKeysFragment extends PreferenceFragment implements Preference.O
             return getFriendlyShortcutName(localIntent);
         } catch (URISyntaxException localURISyntaxException) {}
         return paramUri;
-    }
-
-    @Override
-    public void onActivityResult(int paramRequest, int paramResult, Intent paramData) {
-        super.onActivityResult(paramRequest, paramResult, paramData);
-        if (paramResult != -1) {
-            return;
-        }
-        switch (paramRequest)
-        {
-            case REQUEST_PICK_SHORTCUT:
-                processShortcut(paramData, REQUEST_PICK_APPLICATION, REQUEST_CREATE_SHORTCUT);
-                return;
-            case REQUEST_PICK_APPLICATION:
-                completeSetCustomApp(paramData);
-                return;
-            case REQUEST_CREATE_SHORTCUT:
-                completeSetCustomShortcut(paramData);
-                return;
-            default:
-        }
-
     }
 
     @Override
@@ -561,25 +462,25 @@ public class HardKeysFragment extends PreferenceFragment implements Preference.O
         /* For app picker preferences */
         if (paramPreference == this.mDoubleHomeAct)
         {
-            pickShort(paramPreference);
+            ((TinkerActivity)getActivity()).displayAppPicker(paramPreference, R.array.apppicker_extras, R.array.apppicker_icons_extras, R.array.apppicker_keys_extras);
             return true;
         }
 
         if (paramPreference == this.mLongHomeAct)
         {
-            pickShort(paramPreference);
+            ((TinkerActivity)getActivity()).displayAppPicker(paramPreference, R.array.apppicker_extras, R.array.apppicker_icons_extras, R.array.apppicker_keys_extras);
             return true;
         }
 
         if (paramPreference == this.mLongBackAct)
         {
-            pickShort(paramPreference);
+            ((TinkerActivity)getActivity()).displayAppPicker(paramPreference, R.array.apppicker_extras, R.array.apppicker_icons_extras, R.array.apppicker_keys_extras);
             return true;
         }
 
         if (paramPreference == this.mLongMenuAct)
         {
-            pickShort(paramPreference);
+            ((TinkerActivity)getActivity()).displayAppPicker(paramPreference, R.array.apppicker_extras, R.array.apppicker_icons_extras, R.array.apppicker_keys_extras);
             return true;
         }
 
@@ -594,59 +495,4 @@ public class HardKeysFragment extends PreferenceFragment implements Preference.O
         setCustomAppSummary(null);
     }
 
-    void processShortcut(Intent paramIntent, int appInt, int shortcutInt) {
-        String str = paramIntent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
-
-        if (!TextUtils.isEmpty(str)) {
-            if (str.equals(getString(R.string.group_applications))) {
-                Intent localIntent1 = new Intent(Intent.ACTION_MAIN, null);
-                localIntent1.addCategory(Intent.CATEGORY_LAUNCHER);
-                Intent localIntent2 = new Intent(Intent.ACTION_PICK_ACTIVITY);
-                localIntent2.putExtra(Intent.EXTRA_INTENT, localIntent1);
-                localIntent2.putExtra(Intent.EXTRA_TITLE, getString(R.string.select_custom_apps_title));
-                startActivityForResult(localIntent2, appInt);
-                return;
-            }
-
-            if (str.equals(getString(R.string.app_name)) || str.equals(getString(R.string.screen_off)) || str.equals(getString(R.string.powermenu)) || str.equals(getString(R.string.donothing))) {
-                completeSetCustom(str);
-                return;
-            }
-        }
-
-        startActivityForResult(paramIntent, shortcutInt);
-    }
-
-    public void shortcutPicked(String paramURI, String paramFriendlyName, boolean paramIsApp)
-    {
-        switch (this.mTargetPref) {
-            case 1:
-                if (Settings.Global.putString(getActivity().getContentResolver(), CUSTOM_DUBHOME_ACTIVITY, paramURI)) {
-                    this.mDoubleHomeAct.setSummary(paramFriendlyName);
-                }
-                break;
-
-            case 2:
-                if (Settings.Global.putString(getActivity().getContentResolver(), CUSTOM_LONGHOME_ACTIVITY, paramURI)) {
-                    this.mLongHomeAct.setSummary(paramFriendlyName);
-                }
-                break;
-
-            case 3:
-                if (Settings.Global.putString(getActivity().getContentResolver(), CUSTOM_LONGBACK_ACTIVITY, paramURI)) {
-                    this.mLongBackAct.setSummary(paramFriendlyName);
-                }
-                break;
-
-            case 4:
-                if (Settings.Global.putString(getActivity().getContentResolver(), CUSTOM_LONGMENU_ACTIVITY, paramURI)) {
-                    this.mLongMenuAct.setSummary(paramFriendlyName);
-                }
-                break;
-            default:
-                Toast.makeText(getActivity(), "Error... lost initiating preference...", Toast.LENGTH_SHORT).show();
-                break;
-        }
-        this.mTargetPref = 0;
-    }
 }

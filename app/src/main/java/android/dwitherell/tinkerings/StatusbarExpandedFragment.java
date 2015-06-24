@@ -22,6 +22,7 @@ import android.preference.PreferenceScreen;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
@@ -50,9 +51,6 @@ public class StatusbarExpandedFragment extends PreferenceFragment implements Pre
     private static final String CUSTOM_POWERMENU_INTENT = "powermenuintent";
     private static final String CUSTOM_SCREENOFF_INTENT = "screenoffintent";
     private static final int SELECT_PHOTO = 4;
-    private static final int REQUEST_CREATE_SHORTCUT = 3;
-    private static final int REQUEST_PICK_APPLICATION = 2;
-    private static final int REQUEST_PICK_SHORTCUT = 1;
 
     private static final String picdirpath = "Tweaked/res/";
     private static final String notibgfile = "background.png";
@@ -104,16 +102,6 @@ public class StatusbarExpandedFragment extends PreferenceFragment implements Pre
         String str = imageUri.getPath();
 
         shortcutPicked(str, str, true);
-    }
-
-    private void completeSetCustomApp(Intent customIntent) {
-        shortcutPicked(customIntent.toUri(0), getFriendlyActivityName(customIntent, false), true);
-    }
-
-    private void completeSetCustomShortcut(Intent shortIntent) {
-        Intent localIntent = shortIntent.getParcelableExtra(Intent.EXTRA_SHORTCUT_INTENT);
-        localIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, shortIntent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME));
-        shortcutPicked(localIntent.toUri(0).replaceAll("com.android.contacts.action.QUICK_CONTACT", Intent.ACTION_VIEW), getFriendlyShortcutName(localIntent), false);
     }
 
     private String getFriendlyActivityName(Intent activityIntent, boolean labelOnly) {
@@ -175,39 +163,6 @@ public class StatusbarExpandedFragment extends PreferenceFragment implements Pre
             startActivityForResult(photoPickerIntent, SELECT_PHOTO);
         }
 
-    }
-
-    private void pickShort(Preference paramPreference) {
-        Bundle localBundle = new Bundle();
-        Context localContext = getActivity();
-        ArrayList<String> localArrayList1 = new ArrayList<>();
-        localArrayList1.add(getString(R.string.group_applications));
-        localArrayList1.add(getString(R.string.app_name));
-        //localArrayList1.add(getString(R.string.screen_off));
-        //localArrayList1.add(getString(R.string.powermenu));
-        //localArrayList1.add(getString(R.string.donothing));
-
-        localBundle.putStringArrayList(Intent.EXTRA_SHORTCUT_NAME, localArrayList1);
-
-        ArrayList<Intent.ShortcutIconResource> localArrayList2 = new ArrayList<>();
-        localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_launcher_apps));
-        localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.app_icon));
-        //localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_launcher_screenoff));
-        //localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_tsm_powermenu));
-        //localArrayList2.add(Intent.ShortcutIconResource.fromContext(localContext, R.drawable.ic_launcher_donothing));
-
-        localBundle.putParcelableArrayList(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, localArrayList2);
-
-        Intent localIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
-        localIntent.putExtra(Intent.EXTRA_INTENT, new Intent(Intent.ACTION_CREATE_SHORTCUT));
-        localIntent.putExtra(Intent.EXTRA_TITLE, getString(R.string.select_custom_short_title));
-        localIntent.putExtras(localBundle);
-
-        mTargetPref = 0;
-        if (paramPreference == this.mDateViewApp) {
-            mTargetPref = 1;
-        }
-        startActivityForResult(localIntent, REQUEST_PICK_SHORTCUT);
     }
 
     private void setCustomAppSummary(Preference appPickPref) {
@@ -329,15 +284,6 @@ public class StatusbarExpandedFragment extends PreferenceFragment implements Pre
         }
         switch (paramRequest)
         {
-            case REQUEST_PICK_SHORTCUT:
-                processShortcut(paramData, REQUEST_PICK_APPLICATION, REQUEST_CREATE_SHORTCUT);
-                return;
-            case REQUEST_PICK_APPLICATION:
-                completeSetCustomApp(paramData);
-                return;
-            case REQUEST_CREATE_SHORTCUT:
-                completeSetCustomShortcut(paramData);
-                return;
             case SELECT_PHOTO:
                 completePicPicker(paramData);
                 return;
@@ -587,7 +533,7 @@ public class StatusbarExpandedFragment extends PreferenceFragment implements Pre
 
         /* For app picker preferences */
         if (paramPreference == this.mDateViewApp) {
-            pickShort(mDateViewApp);
+            ((TinkerActivity) getActivity()).displayAppPicker(paramPreference, R.array.apppicker_2_extras, R.array.apppicker_2_icons_extras, R.array.apppicker_2_keys_extras);
             return true;
         }
 
@@ -635,12 +581,6 @@ public class StatusbarExpandedFragment extends PreferenceFragment implements Pre
     {
         int i;
         switch (this.mTargetPref) {
-            case 1:
-                if (Settings.Global.putString(getActivity().getContentResolver(), CUSTOM_DATE_VIEW, paramURI)) {
-                    this.mDateViewApp.setSummary(paramFriendlyName);
-                }
-                break;
-
             case 2:
                 if (Settings.Global.putString(getActivity().getContentResolver(), CUSTOM_PIC_BG, paramURI)) {
                     this.mNotiPicPicker.setSummary(paramFriendlyName);

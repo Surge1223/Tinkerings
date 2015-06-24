@@ -18,7 +18,6 @@ import android.support.annotation.NonNull;
 public class TWizAppsFragment extends PreferenceFragment {
 
     ViewPager pager;
-
     SlidingTabLayout slidingTabLayout;
 
     @Override
@@ -36,12 +35,17 @@ public class TWizAppsFragment extends PreferenceFragment {
 
         pager = (ViewPager) v.findViewById(R.id.viewpager);
         slidingTabLayout = (SlidingTabLayout) v.findViewById(R.id.sliding_tabs);
+        slidingTabLayout.setInitFrag(this);
 
         pager.setAdapter(new ViewPagerAdapter(getChildFragmentManager(), tabTitles, tabFrags));
 
         slidingTabLayout.setViewPager(pager);
 
         slidingTabLayout.setSelectedIndicatorColors(Color.WHITE);
+        slidingTabLayout.setDistributeEvenly(false);
+
+        // go to last tab that was opened
+        pager.setCurrentItem(TinkerActivity.LAST_TWIZ_APP_TAB);
 
         return v;
     }
