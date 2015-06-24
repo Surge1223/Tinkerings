@@ -115,6 +115,7 @@ public class ColorPickerPreference extends Preference implements
             }
 
             mDefault = convertToColorInt(attrs.getAttributeValue(androidns, "defaultValue"));
+			a.recycle();
         }
     }
 
