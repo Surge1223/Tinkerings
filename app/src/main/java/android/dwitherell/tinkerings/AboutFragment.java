@@ -5,27 +5,27 @@ package android.dwitherell.tinkerings;
  */
 
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceScreen;
 import android.support.annotation.NonNull;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class AboutFragment extends PreferenceFragment {
-    private static final String INFOLINK = "infolink";
-    private static final String ODLOGO = "od_logo";
+
+public class AboutFragment extends Fragment {
 
     Context context;
-    private Preference mInfoDialog;
-    private Preference mLogoLayout;
     private AlertDialog popUpInfo;
     private int clickCount;
 
@@ -83,43 +83,51 @@ public class AboutFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /* Load the preferences from an XML resource */
-        addPreferencesFromResource(R.xml.about_fragment);
-
         this.context = getActivity().getApplicationContext();
-        PreferenceScreen localPreferenceScreen = getPreferenceScreen();
-
         this.popUpInfo = null;
         clickCount = 0;
-
-        // This is for miscellaneous preferences
-        this.mInfoDialog = localPreferenceScreen.findPreference(INFOLINK);
-        this.mLogoLayout = localPreferenceScreen.findPreference(ODLOGO);
-        this.mLogoLayout.setSelectable(false);
     }
 
     @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen paramPreferenceScreen, @NonNull Preference paramPreference) {
-        /* For miscellaneous pref things */
-        if (paramPreference == this.mInfoDialog) {
-            if (popUpInfo == null || !popUpInfo.isShowing()) {
-                getStartDialog().show();
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.about_frag_card, container, false);
+
+        final LinearLayout logo = (LinearLayout)v.findViewById(R.id.logo_card);
+        LinearLayout link = (LinearLayout)v.findViewById(R.id.link1_card);
+        LinearLayout thanks = (LinearLayout)v.findViewById(R.id.credits_card);
+
+        thanks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (popUpInfo == null || !popUpInfo.isShowing()) {
+                    getStartDialog().show();
+                    logo.setClickable(true);
+                }
             }
-            this.mLogoLayout.setSelectable(true);
-            return true;
-        }
+        });
 
-        if (paramPreference == this.mLogoLayout) {
-            clickCount += 1;
-
-            if (clickCount >= 5) {
-                clickCount = 0;
-                ((TinkerActivity)getActivity()).displayExtra();
+        link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent link = new Intent(Intent.ACTION_VIEW);
+                Uri url = Uri.parse(getString(R.string.link_data));
+                link.setData(url);
+                startActivity(link);
             }
-            return true;
-        }
+        });
 
-        return false;
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickCount++;
+                if (clickCount >= 5) {
+                    clickCount = 0;
+                    ((TinkerActivity) getActivity()).displayExtra();
+                }
+            }
+        });
+
+        logo.setClickable(false);
+        return v;
     }
-
 }

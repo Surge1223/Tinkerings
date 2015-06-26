@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <Preference android:layout="@layout/logo" android:key="od_logo" />
-    <PreferenceScreen android:icon="@drawable/xda_icon" android:title="@string/link_title" android:summary="@string/link_summary">
-        <intent android:action="android.intent.action.VIEW" android:data="@string/link_data" />
-    </PreferenceScreen>
-    <Preference android:title="@string/miscinfo_title" android:summary="@string/miscinfo_summary" android:key="infolink"/>
-</PreferenceScreen>

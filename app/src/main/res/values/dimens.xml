@@ -14,4 +14,9 @@
     <dimen name="colorpicker_hue_width">30dip</dimen>
     <dimen name="drawer_item_height">40dp</dimen>
     <dimen name="apppicker_listview_height">50dp</dimen>
+    <dimen name="cardview_padding">5dp</dimen>
+    <dimen name="cardview_pref_padding">20dp</dimen>
+    <dimen name="cardview_rounding">4dp</dimen>
+    <dimen name="cardview_pref_height">90dp</dimen>
+    <dimen name="cardview_elevate">5dp</dimen>
 </resources>

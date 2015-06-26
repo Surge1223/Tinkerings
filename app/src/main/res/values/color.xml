@@ -14,6 +14,7 @@
     <color name="col_accnt">#ff03a9f4</color>
     <color name="statbar">#ff0288d1</color>
     <color name="transcol">#00000000</color>
+    <color name="cardview_pref_title">#ffffffff</color>
     <!-- If one wanted... they could alter the checkered alpha colors with the below -->
     <color name="alphawhite">#ffffffff</color>
     <color name="alphagray">#ffcbcbcb</color>
