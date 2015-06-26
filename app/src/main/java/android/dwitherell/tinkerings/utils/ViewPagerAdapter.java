@@ -15,7 +15,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     private String titles[] ;
     private String frags[] ;
     private String mPackageName;
-    private Fragment basefrag;
 
     public ViewPagerAdapter(FragmentManager fm, String[] titles2, String[] frags2) {
         super(fm);
